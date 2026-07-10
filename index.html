@@ -404,27 +404,27 @@
         </div>
     </section>
     <!-- Stats Section -->
-    <section class="py-20 bg-[#915EFF] text-white">
-        <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="text-center">
-                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2">24/7</p>
-                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/80">Support Availability
-                </p>
+    <section class="py-24 relative overflow-hidden bg-[#915EFF] text-white" id="stats">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
+        
+        <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="0">
+                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg"><span class="stat-num" data-target="24">0</span>/7</p>
+                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Support Availability</p>
             </div>
-            <div class="text-center">
-                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2">1M+</p>
-                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/80">Calls Handled Monthly
-                </p>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg"><span class="stat-num" data-target="1">0</span>M+</p>
+                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Calls Handled Monthly</p>
             </div>
-            <div class="text-center">
-                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2">95%</p>
-                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/80">Client Satisfaction
-                </p>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg"><span class="stat-num" data-target="95">0</span>%</p>
+                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Client Satisfaction</p>
             </div>
-            <div class="text-center">
-                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2">7 Days</p>
-                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/80">Average Setup Time
-                </p>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg"><span class="stat-num" data-target="7">0</span> Days</p>
+                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Average Setup Time</p>
             </div>
         </div>
     </section>
@@ -1193,6 +1193,39 @@
                         submitBtn.disabled = false;
                     }
                 });
+            }
+        });
+    </script>
+
+    <!-- Stats Counter Animation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                
+                const stats = document.querySelectorAll('.stat-num');
+                if (stats.length > 0) {
+                    stats.forEach(stat => {
+                        const target = parseInt(stat.getAttribute('data-target'));
+                        
+                        ScrollTrigger.create({
+                            trigger: "#stats",
+                            start: "top 85%", // when the top of the section hits 85% down the viewport
+                            onEnter: () => {
+                                gsap.to(stat, {
+                                    innerHTML: target,
+                                    duration: 2.5,
+                                    ease: "power3.out",
+                                    snap: { innerHTML: 1 }, // animate whole numbers
+                                    onUpdate: function() {
+                                        stat.innerHTML = Math.round(this.targets()[0].innerHTML);
+                                    }
+                                });
+                            },
+                            once: true
+                        });
+                    });
+                }
             }
         });
     </script>
