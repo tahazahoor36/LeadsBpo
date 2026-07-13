@@ -19,10 +19,10 @@
 // CONFIGURATION — paste your values below
 // ─────────────────────────────────────────────────────────────────
 
-const SUPABASE_URL  = 'https://afcgwoxvgmlekeuxnmns.supabase.co';
+const SUPABASE_URL = 'https://afcgwoxvgmlekeuxnmns.supabase.co';
 
 // ↓ PASTE YOUR SUPABASE ANON/PUBLIC KEY HERE (from Supabase Dashboard → Settings → API)
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY_HERE';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFmY2d3b3h2Z21sZWtldXhubW5zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2MTM2NDcsImV4cCI6MjA5OTE4OTY0N30.M10Yl__reBZY-WlHrPX6cDwx1zFhU7Zwn01LkcR3PJk';
 
 // ─────────────────────────────────────────────────────────────────
 // Create and export the single reusable browser client
