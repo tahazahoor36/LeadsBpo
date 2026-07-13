@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Security | Leads BPO</title>
+    <meta name="description" content="Learn about the security practices Leads BPO uses to protect your data and our systems.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/output.css">
+    <style>
+        .prose h2 { color: #fff; margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.375rem; font-weight: 700; }
+        .prose h3 { color: #c4b5fd; margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem; font-weight: 600; }
+        .prose p  { color: #9ca3af; line-height: 1.8; margin-bottom: 1rem; }
+        .prose ul { color: #9ca3af; padding-left: 1.5rem; margin-bottom: 1rem; }
+        .prose ul li { margin-bottom: 0.375rem; list-style-type: disc; }
+        .prose a  { color: #915EFF; text-decoration: underline; }
+        .security-card {
+            background: #151030;
+            border: 1px solid #2d2560;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .security-card .icon {
+            color: #915EFF;
+            font-family: 'Material Symbols Outlined';
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .security-card h3 { color: #fff; margin: 0 0 0.4rem; font-size: 1rem; font-weight: 600; }
+        .security-card p  { color: #9ca3af; margin: 0; font-size: 0.9rem; line-height: 1.6; }
+    </style>
+</head>
+<body class="bg-[#0b080c] text-white font-['Inter']">
+    <header class="py-6 px-6 md:px-12 border-b border-white/10">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="/" class="font-['Plus_Jakarta_Sans'] text-2xl font-bold text-white hover:text-[#915EFF] transition-colors">Leads BPO</a>
+            <a href="/" class="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">arrow_back</span> Back to Home
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-16 prose">
+        <span class="text-[#915EFF] text-sm uppercase tracking-widest font-semibold">Trust &amp; Safety</span>
+        <h1 class="text-4xl font-bold text-white mt-2 mb-2">Security</h1>
+        <p class="text-gray-500 text-sm mb-10">Last updated: July 2026</p>
+
+        <p>At Leads BPO, we take the security of your data seriously. This page describes the practices we have in place to protect the information you share with us through our website forms.</p>
+
+        <h2>Our Security Practices</h2>
+
+        <div class="security-card">
+            <span class="icon">lock</span>
+            <div>
+                <h3>Encrypted Connections</h3>
+                <p>All data transmitted between your browser and our website is encrypted using HTTPS/TLS. This means your form submissions travel securely and cannot be read by third parties in transit.</p>
+            </div>
+        </div>
+
+        <div class="security-card">
+            <span class="icon">shield</span>
+            <div>
+                <h3>Row Level Security (RLS)</h3>
+                <p>Form submissions are stored in a database protected by Row Level Security policies. Anonymous visitors can only submit data — they cannot read, modify, or delete any records. Admin access requires authenticated credentials.</p>
+            </div>
+        </div>
+
+        <div class="security-card">
+            <span class="icon">key</span>
+            <div>
+                <h3>Secure Admin Access</h3>
+                <p>Our admin panel requires authenticated login through Supabase Auth. Admin accounts are created manually — there is no public registration. Session tokens are managed securely.</p>
+            </div>
+        </div>
+
+        <div class="security-card">
+            <span class="icon">bug_report</span>
+            <div>
+                <h3>Spam &amp; Bot Protection</h3>
+                <p>Our forms include server-side validation, honeypot fields, minimum submission timing checks, and submission rate limiting to reduce spam and automated bot submissions.</p>
+            </div>
+        </div>
+
+        <div class="security-card">
+            <span class="icon">manage_accounts</span>
+            <div>
+                <h3>Minimal Data Collection</h3>
+                <p>We collect only the information necessary to respond to your enquiry or application. We do not collect payment information, store passwords, or require account creation for visitors.</p>
+            </div>
+        </div>
+
+        <div class="security-card">
+            <span class="icon">visibility_off</span>
+            <div>
+                <h3>No Secret Keys in Browser Code</h3>
+                <p>Our website uses only a public anon key in browser-side code — never a service-role key or database password. All sensitive operations are protected by server-side security policies.</p>
+            </div>
+        </div>
+
+        <h2>Limitations</h2>
+        <p>While we apply reasonable measures to protect your information, no internet transmission or electronic storage system is entirely free from security risks. We encourage you to use up-to-date browsers and to avoid submitting sensitive information (such as passwords or financial details) through general contact forms.</p>
+
+        <h2>Reporting a Security Issue</h2>
+        <p>If you believe you have found a security vulnerability on our website, please contact us responsibly at <a href="mailto:leadsbpo65@gmail.com">leadsbpo65@gmail.com</a> with a clear description of the issue. We will investigate and respond promptly.</p>
+
+        <h2>Contact</h2>
+        <ul>
+            <li>Email: <a href="mailto:leadsbpo65@gmail.com">leadsbpo65@gmail.com</a></li>
+            <li>Phone: <a href="tel:+923108069046">+92 310 8069046</a></li>
+        </ul>
+    </main>
+
+    <footer class="border-t border-white/10 py-8 px-6 text-center text-gray-500 text-sm">
+        <p>© 2026 Leads BPO. All rights reserved. &nbsp;|&nbsp;
+            <a href="/privacy" class="hover:text-white">Privacy</a> &nbsp;|&nbsp;
+            <a href="/terms" class="hover:text-white">Terms</a> &nbsp;|&nbsp;
+            <a href="/security" class="hover:text-white">Security</a> &nbsp;|&nbsp;
+            <a href="/sitemap" class="hover:text-white">Sitemap</a>
+        </p>
+    </footer>
+</body>
+</html>

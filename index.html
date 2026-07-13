@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Leads BPO | Professional BPO &amp; Call Center Solutions</title>
+    <meta name="description" content="Leads BPO provides premium outsourcing solutions including call center, lead generation, customer support, telesales, appointment setting, and medical billing services.">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
     <link
@@ -31,20 +32,42 @@
             background-image: radial-gradient(circle at 2px 2px, #E2E8F0 1px, transparent 0);
             background-size: 40px 40px;
         }
+
+        /* Mobile menu overlay transitions */
+        #mobileMenuOverlay {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        /* FAQ smooth expand */
+        details > p {
+            transition: all 0.3s ease;
+        }
+
+        /* Focus ring for keyboard users — subtle, design-consistent */
+        :focus-visible {
+            outline: 2px solid #915EFF;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
     </style>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- GSAP loaded before app.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 
 <body class="bg-[#0b080c] text-on-surface font-body-md overflow-x-hidden">
-    <!-- Serene Hero Section -->
+    <!-- ══════════════════════════════════════════════════════
+         HERO SECTION
+    ══════════════════════════════════════════════════════ -->
     <section class="relative w-full h-screen overflow-hidden font-['Inter'] text-white" id="home">
         <!-- Video Background -->
         <div class="absolute inset-0 w-full h-full">
             <div class="absolute inset-0 bg-black/40 z-10"></div>
-            <video autoPlay loop muted playsInline class="w-full h-full object-cover">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover">
                 <source
                     src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260613_180732_a54afbf6-b30d-470e-861f-669871f09f67.mp4"
                     type="video/mp4" />
@@ -54,7 +77,7 @@
         <!-- Content Container -->
         <div class="relative w-full h-full flex flex-col justify-between p-6 md:p-12 z-20">
             <!-- Navigation -->
-            <nav class="w-full flex items-center justify-between">
+            <nav class="w-full flex items-center justify-between" role="navigation" aria-label="Main navigation">
                 <div class="font-['Dancing_Script'] text-3xl md:text-4xl text-white tracking-wide">
                     Leads BPO
                 </div>
@@ -73,15 +96,22 @@
                 </div>
 
                 <div class="hidden md:block">
-                    <button
-                        class="bg-transparent border border-white/30 text-white px-6 py-2.5 rounded-full text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    <button id="bookNowBtn" data-scroll="contact"
+                        class="bg-transparent border border-white/30 text-white px-6 py-2.5 rounded-full text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                        aria-label="Book a free consultation">
                         Book Now
                     </button>
                 </div>
 
-                <!-- Mobile Menu Button (Icon only) -->
+                <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <span class="material-symbols-outlined text-white text-3xl">menu</span>
+                    <button id="mobileMenuBtn"
+                        aria-label="Open navigation menu"
+                        aria-expanded="false"
+                        aria-controls="mobileMenuOverlay"
+                        class="text-white p-1">
+                        <span class="material-symbols-outlined text-3xl" aria-hidden="true">menu</span>
+                    </button>
                 </div>
             </nav>
 
@@ -94,19 +124,16 @@
                 <p class="font-light text-white/80 text-lg md:text-xl max-w-xl mx-auto tracking-wide leading-relaxed">
                     Scale your operations with dedicated teams for reliable customer support, high-intent lead
                     generation, and efficient back-office processing.
-
-
                 </p>
                 <div class="mt-10 flex flex-col sm:flex-row items-center gap-6">
-                    <button
+                    <button data-scroll="services"
                         class="bg-white text-black px-8 py-4 rounded-full text-sm font-medium tracking-widest uppercase hover:bg-white/90 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]">
                         Explore Our Services
                     </button>
-                    <a href="#about"
-                        class="text-white/70 hover:text-white text-sm tracking-widest uppercase border-b border-white/30 hover:border-white pb-1 transition-all">
-                        Our Methadologys
-
-                    </a>
+                    <button data-scroll="methodology"
+                        class="text-white/70 hover:text-white text-sm tracking-widest uppercase border-b border-white/30 hover:border-white pb-1 transition-all bg-transparent">
+                        Our Methodology
+                    </button>
                 </div>
             </div>
 
@@ -118,7 +145,46 @@
             </div>
         </div>
     </section>
-    <!-- Services Section -->
+
+    <!-- ══════════════════════════════════════════════════════
+         MOBILE MENU OVERLAY
+    ══════════════════════════════════════════════════════ -->
+    <div id="mobileMenuOverlay"
+        class="hidden fixed inset-0 z-50 md:hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+        aria-hidden="true">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+        <!-- Menu Panel -->
+        <div class="absolute right-0 top-0 h-full w-72 bg-[#0b080c] border-l border-white/10 flex flex-col p-8">
+            <div class="flex justify-between items-center mb-10">
+                <span class="font-['Dancing_Script'] text-2xl text-white">Leads BPO</span>
+                <button id="mobileMenuCloseBtn" class="text-white" aria-label="Close menu">
+                    <span class="material-symbols-outlined text-2xl">close</span>
+                </button>
+            </div>
+            <nav class="flex flex-col gap-6" aria-label="Mobile navigation">
+                <a href="#home"   class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Home</a>
+                <a href="#about"  class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">About</a>
+                <a href="#services" class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Services</a>
+                <a href="#careers"  class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Careers</a>
+                <a href="#faqs"     class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">FAQs</a>
+                <a href="#contact"  class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Contact</a>
+            </nav>
+            <div class="mt-auto">
+                <button data-scroll="contact"
+                    class="w-full bg-[#915EFF] text-white px-6 py-3 rounded-full text-sm tracking-widest uppercase hover:bg-[#151030] transition-all">
+                    Book Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         SERVICES SECTION
+    ══════════════════════════════════════════════════════ -->
     <section class="py-section-gap bg-[#0b080c] relative overflow-hidden" id="services">
         <div class="max-w-container-max mx-auto px-margin-desktop">
             <div class="text-center max-w-3xl mx-auto mb-20">
@@ -136,112 +202,128 @@
                     data-aos="fade-up" data-aos-delay="0">
                     <div
                         class="w-12 h-12 rounded-lg bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF] mb-6 group-hover:bg-[#915EFF] group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">call</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">call</span>
                     </div>
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Call Center</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Full-spectrum inbound and outbound voice services handling
                         thousands of queries daily with precision.</p>
-                    <a class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all"
-                        href="#">View Details <span
-                            class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Call Center"
+                        aria-label="View details for Call Center service">
+                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    </button>
                 </div>
                 <!-- Card 2 -->
                 <div class="p-8 rounded-xl border border-border-subtle bg-[#0b080c] hover:border-[#915EFF] hover:shadow-lg transition-all group flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="100">
                     <div
                         class="w-12 h-12 rounded-lg bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF] mb-6 group-hover:bg-[#915EFF] group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">person_add</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">person_add</span>
                     </div>
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Lead Gen</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Advanced lead identification and qualification techniques to
                         fuel your sales pipeline with high-conversion prospects.</p>
-                    <a class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all"
-                        href="#">View Details <span
-                            class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Lead Generation"
+                        aria-label="View details for Lead Generation service">
+                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    </button>
                 </div>
                 <!-- Card 3 -->
                 <div class="p-8 rounded-xl border border-border-subtle bg-[#0b080c] hover:border-[#915EFF] hover:shadow-lg transition-all group flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="200">
                     <div
                         class="w-12 h-12 rounded-lg bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF] mb-6 group-hover:bg-[#915EFF] group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">support_agent</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">support_agent</span>
                     </div>
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Customer Support</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Omnichannel support across chat, email, and social media to
                         ensure your customers feel heard and valued.</p>
-                    <a class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all"
-                        href="#">View Details <span
-                            class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Customer Support"
+                        aria-label="View details for Customer Support service">
+                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    </button>
                 </div>
                 <!-- Card 4 -->
                 <div class="p-8 rounded-xl border border-border-subtle bg-[#0b080c] hover:border-[#915EFF] hover:shadow-lg transition-all group flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="300">
                     <div
                         class="w-12 h-12 rounded-lg bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF] mb-6 group-hover:bg-[#915EFF] group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">point_of_sale</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">point_of_sale</span>
                     </div>
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Telesales</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Persuasive and professional sales strategies designed to
                         close deals and drive immediate revenue growth.</p>
-                    <a class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all"
-                        href="#">View Details <span
-                            class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Telesales"
+                        aria-label="View details for Telesales service">
+                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    </button>
                 </div>
                 <!-- Card 5 -->
                 <div class="p-8 rounded-xl border border-border-subtle bg-[#0b080c] hover:border-[#915EFF] hover:shadow-lg transition-all group flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="400">
                     <div
                         class="w-12 h-12 rounded-lg bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF] mb-6 group-hover:bg-[#915EFF] group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">calendar_month</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
                     </div>
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Appointment Setting</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Expert coordination to fill your sales team's calendar with
                         meetings with key decision-makers.</p>
-                    <a class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all"
-                        href="#">View Details <span
-                            class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Appointment Setting"
+                        aria-label="View details for Appointment Setting service">
+                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    </button>
                 </div>
                 <!-- Card 6 -->
                 <div class="p-8 rounded-xl border border-border-subtle bg-[#0b080c] hover:border-[#915EFF] hover:shadow-lg transition-all group flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="500">
                     <div
                         class="w-12 h-12 rounded-lg bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF] mb-6 group-hover:bg-[#915EFF] group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">inventory_2</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">inventory_2</span>
                     </div>
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Back Office</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Streamlining administrative tasks from data entry to complex
                         documentation and processing.</p>
-                    <a class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all"
-                        href="#">View Details <span
-                            class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Back Office"
+                        aria-label="View details for Back Office service">
+                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    </button>
                 </div>
                 <!-- Card 7 -->
                 <div class="p-8 rounded-xl border border-border-subtle bg-[#0b080c] hover:border-[#915EFF] hover:shadow-lg transition-all group flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="600">
                     <div
                         class="w-12 h-12 rounded-lg bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF] mb-6 group-hover:bg-[#915EFF] group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">rocket_launch</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">rocket_launch</span>
                     </div>
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Biz Dev</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Strategic market analysis and outreach to expand your
                         business presence in new territories.</p>
-                    <a class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all"
-                        href="#">View Details <span
-                            class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Business Development"
+                        aria-label="View details for Business Development service">
+                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    </button>
                 </div>
                 <!-- Card 8 -->
                 <div class="p-8 rounded-xl border border-border-subtle bg-[#0b080c] hover:border-[#915EFF] hover:shadow-lg transition-all group flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="700">
                     <div
                         class="w-12 h-12 rounded-lg bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF] mb-6 group-hover:bg-[#915EFF] group-hover:text-white transition-colors">
-                        <span class="material-symbols-outlined">medical_services</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">medical_services</span>
                     </div>
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Medical Billing</h3>
                     <p class="text-gray-400 mb-6 flex-grow">End-to-end revenue cycle management, accurate claim
                         submission, and efficient denial processing for healthcare providers.</p>
-                    <a class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all"
-                        href="#">View Details <span
-                            class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Medical Billing"
+                        aria-label="View details for Medical Billing service">
+                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    </button>
                 </div>
                 <!-- CTA Card -->
                 <div class="p-8 rounded-xl bg-[#151030] text-white flex flex-col justify-center items-center text-center hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 transition-all duration-300 cursor-pointer"
@@ -255,7 +337,10 @@
             </div>
         </div>
     </section>
-    <!-- About Section -->
+
+    <!-- ══════════════════════════════════════════════════════
+         ABOUT SECTION
+    ══════════════════════════════════════════════════════ -->
     <section class="py-section-gap bg-[#0b080c]" id="about">
         <div
             class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
@@ -263,7 +348,7 @@
                 data-aos="fade-right">
                 <div class="rounded-2xl overflow-hidden shadow-2xl border border-[#151030] aspect-[4/3] relative group">
                     <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        src="modern_dashboard.png" alt="Leads BPO Operations">
+                        src="modern_dashboard.png" alt="Leads BPO Operations Dashboard">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0b080c]/50 to-transparent"></div>
                 </div>
                 <div
@@ -286,7 +371,7 @@
                         <div
                             class="mt-1 w-6 h-6 rounded-full bg-green-mint/10 flex items-center justify-center text-green-mint">
                             <span class="material-symbols-outlined text-[16px]"
-                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check_circle</span>
                         </div>
                         <div>
                             <h4 class="font-headline-sm text-[18px] text-white">Reduce Workload</h4>
@@ -299,7 +384,7 @@
                         <div
                             class="mt-1 w-6 h-6 rounded-full bg-green-mint/10 flex items-center justify-center text-green-mint">
                             <span class="material-symbols-outlined text-[16px]"
-                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                style="font-variation-settings: 'FILL' 1;" aria-hidden="true">check_circle</span>
                         </div>
                         <div>
                             <h4 class="font-headline-sm text-[18px] text-white">Scalable Operations</h4>
@@ -314,8 +399,10 @@
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="py-section-gap bg-[#151030] text-white relative overflow-hidden">
+    <!-- ══════════════════════════════════════════════════════
+         PROCESS / HOW WE WORK SECTION
+    ══════════════════════════════════════════════════════ -->
+    <section class="py-section-gap bg-[#151030] text-white relative overflow-hidden" id="process">
         <div
             class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
         </div>
@@ -395,7 +482,7 @@
                         class="z-20 flex items-center justify-center order-1 bg-[#0b080c] shadow-xl w-16 h-16 rounded-full border-4 border-[#151030] transition-all duration-300 absolute left-0 md:left-1/2 transform -translate-x-0 md:-translate-x-1/2 text-white font-headline-sm text-2xl timeline-icon">
                         5</div>
                     <div class="order-1 w-full pl-24 md:pl-0 md:w-5/12 text-left md:text-right pr-0 md:pr-12">
-                        <h4 class="font-headline-sm text-[22px] text-white mb-2">Track & Improve</h4>
+                        <h4 class="font-headline-sm text-[22px] text-white mb-2">Track &amp; Improve</h4>
                         <p class="text-[16px] text-gray-400">Continuous monitoring and iterative optimizations for peak
                             performance.</p>
                     </div>
@@ -403,32 +490,45 @@
             </div>
         </div>
     </section>
-    <!-- Stats Section -->
+
+    <!-- ══════════════════════════════════════════════════════
+         STATS SECTION
+    ══════════════════════════════════════════════════════ -->
     <section class="py-24 relative overflow-hidden bg-[#915EFF] text-white" id="stats">
-        <!-- Background decorative elements -->
         <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
         <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
-        
+
         <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
             <div class="text-center" data-aos="fade-up" data-aos-delay="0">
-                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg"><span class="stat-num" data-target="24">0</span>/7</p>
+                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg">
+                    <span class="stat-num" data-target="24">0</span>/7
+                </p>
                 <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Support Availability</p>
             </div>
             <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg"><span class="stat-num" data-target="1">0</span>M+</p>
+                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg">
+                    <span class="stat-num" data-target="1">0</span>M+
+                </p>
                 <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Calls Handled Monthly</p>
             </div>
             <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg"><span class="stat-num" data-target="95">0</span>%</p>
+                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg">
+                    <span class="stat-num" data-target="95">0</span>%
+                </p>
                 <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Client Satisfaction</p>
             </div>
             <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg"><span class="stat-num" data-target="7">0</span> Days</p>
+                <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg">
+                    <span class="stat-num" data-target="7">0</span> Days
+                </p>
                 <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Average Setup Time</p>
             </div>
         </div>
     </section>
-    <!-- Careers Section -->
+
+    <!-- ══════════════════════════════════════════════════════
+         CAREERS SECTION
+    ══════════════════════════════════════════════════════ -->
     <section class="py-section-gap bg-[#0b080c]" id="careers">
         <div class="max-w-container-max mx-auto px-margin-desktop">
             <div
@@ -442,29 +542,36 @@
                     </p>
                     <div class="space-y-6 mb-10">
                         <div class="flex items-center gap-4">
-                            <span class="material-symbols-outlined text-green-mint">check_circle</span>
+                            <span class="material-symbols-outlined text-green-mint" aria-hidden="true">check_circle</span>
                             <span class="text-white font-semibold">Competitive Salaries &amp; Benefits</span>
                         </div>
                         <div class="flex items-center gap-4">
-                            <span class="material-symbols-outlined text-green-mint">check_circle</span>
+                            <span class="material-symbols-outlined text-green-mint" aria-hidden="true">check_circle</span>
                             <span class="text-white font-semibold">Continuous Professional Training</span>
                         </div>
                         <div class="flex items-center gap-4">
-                            <span class="material-symbols-outlined text-green-mint">check_circle</span>
+                            <span class="material-symbols-outlined text-green-mint" aria-hidden="true">check_circle</span>
                             <span class="text-white font-semibold">Dynamic &amp; Collaborative Culture</span>
                         </div>
                     </div>
-                    <a class="inline-block bg-[#915EFF] text-white px-10 py-4 rounded-lg font-button text-button uppercase tracking-wider text-center hover:bg-[#151030] transition-all self-start cursor-pointer hover:scale-105 transition-transform duration-300"
-                        id="openCareersModalBtn">View Open Positions</a>
+                    <button
+                        class="inline-block bg-[#915EFF] text-white px-10 py-4 rounded-lg font-button text-button uppercase tracking-wider text-center hover:bg-[#151030] transition-all self-start cursor-pointer hover:scale-105 transition-transform duration-300"
+                        id="openCareersModalBtn"
+                        aria-haspopup="dialog">
+                        View Open Positions
+                    </button>
                 </div>
                 <div class="lg:w-1/2 relative min-h-[400px]" data-aos="fade-left">
                     <img class="absolute inset-0 w-full h-full object-cover"
-                        data-alt="Leads BPO Team collaborative culture" src="modern_team.png">
+                        alt="Leads BPO Team collaborative culture" src="modern_team.png">
                 </div>
             </div>
         </div>
     </section>
-    <!-- Testimonials Section -->
+
+    <!-- ══════════════════════════════════════════════════════
+         TESTIMONIALS SECTION
+    ══════════════════════════════════════════════════════ -->
     <section class="py-section-gap bg-[#0b080c]" id="testimonials">
         <div class="max-w-container-max mx-auto px-margin-desktop">
             <div class="text-center max-w-3xl mx-auto mb-20">
@@ -477,12 +584,12 @@
                 <!-- Testimonial 1 -->
                 <div class="p-8 border border-border-subtle rounded-2xl flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 transition-all duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="0">
-                    <div class="flex text-yellow-500 mb-6">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <div class="flex text-yellow-500 mb-6" aria-label="5 stars">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
                     </div>
                     <p class="text-gray-400 mb-8 flex-grow">"Leads BPO transformed our customer support from a
                         bottleneck into a competitive advantage. Their agents are professional and picked up our complex
@@ -490,7 +597,7 @@
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full overflow-hidden">
                             <img class="w-full h-full object-cover"
-                                data-alt="A professional headshot of a male CEO in a modern suit, crisp white shirt, clean professional lighting, blue accent background, authoritative and trustworthy look."
+                                alt="David Chen, CEO of TechFlow SaaS"
                                 src="taha_zahoor_professional.png">
                         </div>
                         <div>
@@ -502,12 +609,12 @@
                 <!-- Testimonial 2 -->
                 <div class="p-8 border border-border-subtle rounded-2xl flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 transition-all duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex text-yellow-500 mb-6">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <div class="flex text-yellow-500 mb-6" aria-label="5 stars">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
                     </div>
                     <p class="text-gray-400 mb-8 flex-grow">"Our sales pipeline has never been healthier. The lead
                         qualification team at Leads BPO is relentless and highly efficient. Our conversion rates are up
@@ -515,7 +622,7 @@
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full overflow-hidden">
                             <img class="w-full h-full object-cover"
-                                data-alt="A professional headshot of a female Marketing Director, modern business attire, friendly yet professional expression, clean minimalist studio background, high quality portrait."
+                                alt="Sarah Jenkins, Marketing Director of Pillar Real Estate"
                                 src="taha_zahoor.png">
                         </div>
                         <div>
@@ -528,12 +635,12 @@
                 <!-- Testimonial 3 -->
                 <div class="p-8 border border-border-subtle rounded-2xl flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 transition-all duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex text-yellow-500 mb-6">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <div class="flex text-yellow-500 mb-6" aria-label="5 stars">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
                     </div>
                     <p class="text-gray-400 mb-8 flex-grow">"24/7 coverage was a nightmare to manage internally.
                         Partnering with Leads BPO allowed us to provide global support while actually reducing our
@@ -541,7 +648,7 @@
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full overflow-hidden">
                             <img class="w-full h-full object-cover"
-                                data-alt="A professional headshot of an older male executive, sophisticated business professional, neutral background, high contrast lighting, corporate authority look."
+                                alt="Robert Sterling, COO of Global Logistics Inc."
                                 src="taha_zahoor.jpg">
                         </div>
                         <div>
@@ -553,7 +660,10 @@
             </div>
         </div>
     </section>
-    <!-- FAQ Section -->
+
+    <!-- ══════════════════════════════════════════════════════
+         FAQ SECTION
+    ══════════════════════════════════════════════════════ -->
     <section class="py-section-gap bg-[#0b080c]" id="faqs">
         <div class="max-w-[800px] mx-auto px-margin-desktop">
             <h2 class="font-headline-md text-headline-md text-white mb-12 text-center" data-aos="fade-up">Frequently
@@ -561,50 +671,50 @@
             <div class="space-y-4">
                 <details class="group p-6 bg-[#0b080c] border border-border-subtle rounded-xl cursor-pointer">
                     <summary
-                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none">
+                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
+                        aria-expanded="false">
                         How quickly can we start a new campaign?
-                        <span
-                            class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform" aria-hidden="true">expand_more</span>
                     </summary>
                     <p class="mt-4 text-gray-400">We can typically launch a standard customer support or lead generation
                         campaign within 7 to 10 business days, which includes training and system integration.</p>
                 </details>
                 <details class="group p-6 bg-[#0b080c] border border-border-subtle rounded-xl cursor-pointer">
                     <summary
-                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none">
+                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
+                        aria-expanded="false">
                         What is your pricing structure?
-                        <span
-                            class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform" aria-hidden="true">expand_more</span>
                     </summary>
                     <p class="mt-4 text-gray-400">We offer flexible pricing models including per-hour, per-agent, or
                         performance-based models depending on the service type and volume requirements.</p>
                 </details>
                 <details class="group p-6 bg-[#0b080c] border border-border-subtle rounded-xl cursor-pointer">
                     <summary
-                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none">
+                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
+                        aria-expanded="false">
                         How do you ensure the quality of calls?
-                        <span
-                            class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform" aria-hidden="true">expand_more</span>
                     </summary>
                     <p class="mt-4 text-gray-400">Every call is recorded and a percentage is audited daily by our
                         dedicated QA team using a comprehensive scorecard aligned with your brand standards.</p>
                 </details>
                 <details class="group p-6 bg-[#0b080c] border border-border-subtle rounded-xl cursor-pointer">
                     <summary
-                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none">
+                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
+                        aria-expanded="false">
                         Can you work with our existing CRM?
-                        <span
-                            class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform" aria-hidden="true">expand_more</span>
                     </summary>
                     <p class="mt-4 text-gray-400">Yes, we are proficient in major CRMs like Salesforce, HubSpot, and
                         Zendesk, and our tech team can handle most custom integrations.</p>
                 </details>
                 <details class="group p-6 bg-[#0b080c] border border-border-subtle rounded-xl cursor-pointer">
                     <summary
-                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none">
+                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
+                        aria-expanded="false">
                         Is there a minimum contract length?
-                        <span
-                            class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform" aria-hidden="true">expand_more</span>
                     </summary>
                     <p class="mt-4 text-gray-400">While we prefer long-term partnerships for maximum impact, we offer
                         trial periods and short-term contracts for specific seasonal projects.</p>
@@ -612,7 +722,10 @@
             </div>
         </div>
     </section>
-    <!-- Contact Section -->
+
+    <!-- ══════════════════════════════════════════════════════
+         CONTACT SECTION
+    ══════════════════════════════════════════════════════ -->
     <section class="py-section-gap bg-[#0b080c] relative" id="contact">
         <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-gutter">
             <div class="space-y-8" data-aos="fade-right">
@@ -624,92 +737,114 @@
                     scale? Fill out the form and our solutions consultant will contact you within 24 hours to discuss a
                     custom plan for your business.</p>
                 <div class="space-y-6 pt-8">
+                    <!-- Email -->
                     <div class="flex items-center gap-4">
                         <div
                             class="w-12 h-12 rounded-full bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF]">
-                            <span class="material-symbols-outlined">mail</span>
+                            <span class="material-symbols-outlined" aria-hidden="true">mail</span>
                         </div>
                         <div>
                             <p class="text-[12px] text-gray-400 uppercase font-bold tracking-wider">Email Us</p>
-                            <p class="text-white font-semibold">leadsbpo65@gmail.com</p>
+                            <a href="mailto:leadsbpo65@gmail.com"
+                                class="text-white font-semibold hover:text-[#915EFF] transition-colors"
+                                data-contact="email">leadsbpo65@gmail.com</a>
                         </div>
                     </div>
+                    <!-- Phone -->
                     <div class="flex items-center gap-4">
                         <div
                             class="w-12 h-12 rounded-full bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF]">
-                            <span class="material-symbols-outlined">call</span>
+                            <span class="material-symbols-outlined" aria-hidden="true">call</span>
                         </div>
                         <div>
                             <p class="text-[12px] text-gray-400 uppercase font-bold tracking-wider">Call Us</p>
-                            <p class="text-white font-semibold">03108069046</p>
+                            <a href="tel:+923108069046"
+                                class="text-white font-semibold hover:text-[#915EFF] transition-colors"
+                                data-contact="phone">03108069046</a>
                         </div>
                     </div>
+                    <!-- Address -->
                     <div class="flex items-center gap-4">
                         <div
                             class="w-12 h-12 rounded-full bg-[#915EFF]/10 flex items-center justify-center text-[#915EFF]">
-                            <span class="material-symbols-outlined">location_on</span>
+                            <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
                         </div>
                         <div>
                             <p class="text-[12px] text-gray-400 uppercase font-bold tracking-wider">Visit Us</p>
-                            <p class="text-white font-semibold">58/62, baig plaza, canning road, saddar, rawalpindi,
-                                46000</p>
+                            <a href="https://www.google.com/maps/search/58+Baig+Plaza+Canning+Road+Saddar+Rawalpindi+Pakistan"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-white font-semibold hover:text-[#915EFF] transition-colors"
+                                data-contact="address">58/62, Baig Plaza, Canning Road, Saddar, Rawalpindi,
+                                46000</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="bg-[#0b080c] p-8 md:p-12 rounded-2xl border border-border-subtle shadow-sm"
                 data-aos="fade-left">
-                <form class="space-y-6" id="contactForm">
+                <form class="space-y-6" id="contactForm" novalidate>
+                    <!-- Honeypot — hidden from real users, bots will fill it -->
+                    <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+                        <label for="contact_hp">Leave this field empty</label>
+                        <input type="text" id="contact_hp" name="contact_hp" tabindex="-1" autocomplete="off" data-honeypot>
+                    </div>
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2" data-aos="fade-right">
-                            <label class="font-label-caps text-label-caps text-gray-400 uppercase">Full Name</label>
+                            <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactFullName">Full Name</label>
                             <input id="contactFullName"
-                                class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all"
-                                placeholder="John Doe" type="text" required="">
+                                class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white"
+                                placeholder="John Doe" type="text" required autocomplete="name"
+                                maxlength="100">
                         </div>
                         <div class="space-y-2" data-aos="fade-left">
-                            <label class="font-label-caps text-label-caps text-gray-400 uppercase">Email Address</label>
+                            <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactEmail">Email Address</label>
                             <input id="contactEmail"
-                                class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all"
-                                placeholder="john@company.com" type="email" required="">
+                                class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white"
+                                placeholder="john@company.com" type="email" required autocomplete="email"
+                                maxlength="150">
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2" data-aos="fade-right">
-                            <label class="font-label-caps text-label-caps text-gray-400 uppercase">Phone Number</label>
+                            <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactPhone">Phone Number</label>
                             <input id="contactPhone"
-                                class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all"
-                                placeholder="+1 (555) 000-0000" type="tel" required="">
+                                class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white"
+                                placeholder="+1 (555) 000-0000" type="tel" required autocomplete="tel"
+                                maxlength="20">
                         </div>
                         <div class="space-y-2" data-aos="fade-left">
-                            <label class="font-label-caps text-label-caps text-gray-400 uppercase">Company Name</label>
+                            <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactCompany">Company Name</label>
                             <input id="contactCompany"
-                                class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all"
-                                placeholder="Acme Inc." type="text">
+                                class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white"
+                                placeholder="Acme Inc." type="text" autocomplete="organization"
+                                maxlength="150">
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <label class="font-label-caps text-label-caps text-gray-400 uppercase">Interested
+                        <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactService">Interested
                             Service</label>
                         <select id="contactService"
-                            class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all">
-                            <option>Call Center</option>
-                            <option>Lead Generation</option>
-                            <option>Customer Support</option>
-                            <option>Telesales</option>
-                            <option>Appointment Setting</option>
-                            <option>Back Office</option>
-                            <option>Medical Billing</option>
-                            <option>Other</option>
+                            class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white">
+                            <option value="Call Center">Call Center</option>
+                            <option value="Lead Generation">Lead Generation</option>
+                            <option value="Customer Support">Customer Support</option>
+                            <option value="Telesales">Telesales</option>
+                            <option value="Appointment Setting">Appointment Setting</option>
+                            <option value="Back Office">Back Office</option>
+                            <option value="Medical Billing">Medical Billing</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     <div class="space-y-2">
-                        <label class="font-label-caps text-label-caps text-gray-400 uppercase">Message</label>
+                        <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactMessage">Message</label>
                         <textarea id="contactMessage"
-                            class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all"
-                            placeholder="Tell us about your requirements..." rows="4"></textarea>
+                            class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white"
+                            placeholder="Tell us about your requirements..." rows="4" maxlength="2000"></textarea>
                     </div>
-                    <div id="contactFeedback" class="hidden rounded p-4 text-sm font-semibold"></div>
+                    <!-- Feedback region — accessible live region -->
+                    <div id="contactFeedback" class="hidden rounded p-4 text-sm font-semibold" aria-live="polite" role="alert"></div>
                     <button id="contactSubmitBtn"
                         class="w-full bg-[#915EFF] text-white py-4 rounded-lg font-button text-button uppercase tracking-wider hover:bg-[#151030] transition-all shadow-lg shadow-[#915EFF]/10 hover:scale-105 transition-transform duration-300"
                         type="submit">Send Request</button>
@@ -717,8 +852,11 @@
             </div>
         </div>
     </section>
-    <!-- Footer -->
-    <footer class="bg-[#151030] text-black py-section-gap border-t border-white/5">
+
+    <!-- ══════════════════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════════════════ -->
+    <footer class="bg-[#151030] text-black py-section-gap border-t border-white/5" role="contentinfo">
         <div
             class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
             <div class="space-y-6">
@@ -726,16 +864,26 @@
                 <p class="text-gray-400 font-body-md pr-4">Global leaders in high-performance BPO solutions. Combining
                     human intelligence with operational excellence to scale your business.</p>
                 <div class="flex gap-4">
-                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#915EFF] hover:border-[#915EFF] transition-all"
-                        href="#"><span class="material-symbols-outlined text-[18px]">share</span></a>
-                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#915EFF] hover:border-[#915EFF] transition-all"
-                        href="#"><span class="material-symbols-outlined text-[18px]">public</span></a>
-                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#915EFF] hover:border-[#915EFF] transition-all"
-                        href="#"><span class="material-symbols-outlined text-[18px]">campaign</span></a>
+                    <!-- Social icons — URLs managed in COMPANY.social in app.js -->
+                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#915EFF] hover:border-[#915EFF] transition-all text-white"
+                        data-social="share"
+                        aria-label="Leads BPO on LinkedIn">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">share</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#915EFF] hover:border-[#915EFF] transition-all text-white"
+                        data-social="web"
+                        aria-label="Leads BPO website">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">public</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#915EFF] hover:border-[#915EFF] transition-all text-white"
+                        data-social="campaign"
+                        aria-label="Leads BPO on Facebook">
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">campaign</span>
+                    </a>
                 </div>
             </div>
             <div class="space-y-6">
-                <h4 class="font-headline-sm text-[18px] font-bold">Quick Links</h4>
+                <h4 class="font-headline-sm text-[18px] font-bold text-white">Quick Links</h4>
                 <ul class="space-y-3">
                     <li><a class="text-gray-400 hover:text-white transition-colors" href="#home">Home</a></li>
                     <li><a class="text-gray-400 hover:text-white transition-colors" href="#about">About</a></li>
@@ -745,222 +893,92 @@
                 </ul>
             </div>
             <div class="space-y-6">
-                <h4 class="font-headline-sm text-[18px] font-bold">Services</h4>
+                <h4 class="font-headline-sm text-[18px] font-bold text-white">Services</h4>
                 <ul class="space-y-3">
-                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#">Call Center</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#">Lead Gen</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#">Customer Support</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#">Telesales</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#">Back Office</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services" data-scroll="services">Call Center</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services" data-scroll="services">Lead Gen</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services" data-scroll="services">Customer Support</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services" data-scroll="services">Telesales</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services" data-scroll="services">Back Office</a></li>
                 </ul>
             </div>
             <div class="space-y-6">
-                <h4 class="font-headline-sm text-[18px] font-bold">Contact</h4>
+                <h4 class="font-headline-sm text-[18px] font-bold text-white">Contact</h4>
                 <ul class="space-y-4">
                     <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]">call</span>
-                        <span class="text-gray-400">03108069046</span>
+                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]" aria-hidden="true">call</span>
+                        <a href="tel:+923108069046" class="text-gray-400 hover:text-white transition-colors">03108069046</a>
                     </li>
                     <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]">mail</span>
-                        <span class="text-gray-400">leadsbpo65@gmail.com</span>
+                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]" aria-hidden="true">mail</span>
+                        <a href="mailto:leadsbpo65@gmail.com" class="text-gray-400 hover:text-white transition-colors">leadsbpo65@gmail.com</a>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]">location_on</span>
-                        <span class="text-gray-400">58/62, baig plaza, canning road, saddar, rawalpindi, 46000</span>
+                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]" aria-hidden="true">location_on</span>
+                        <a href="https://www.google.com/maps/search/58+Baig+Plaza+Canning+Road+Saddar+Rawalpindi+Pakistan"
+                            target="_blank" rel="noopener noreferrer"
+                            class="text-gray-400 hover:text-white transition-colors">
+                            58/62, Baig Plaza, Canning Road, Saddar, Rawalpindi, 46000
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
         <div
             class="max-w-container-max mx-auto px-margin-desktop mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-gray-300/50 text-[14px]">Â© 2026 Leads BPO. All rights reserved. Precise geometry and
+            <p class="text-gray-300/50 text-[14px]">© 2026 Leads BPO. All rights reserved. Precise geometry and
                 human-in-the-loop excellence.</p>
             <div class="flex gap-8 text-[14px]">
-                <a class="text-gray-300/50 hover:text-white transition-colors" href="#">Privacy Policy</a>
-                <a class="text-gray-300/50 hover:text-white transition-colors" href="#">Terms of Service</a>
-                <a class="text-gray-300/50 hover:text-white transition-colors" href="#">Security</a>
-                <a class="text-gray-300/50 hover:text-white transition-colors" href="#">Sitemap</a>
+                <a class="text-gray-300/50 hover:text-white transition-colors" href="/privacy">Privacy Policy</a>
+                <a class="text-gray-300/50 hover:text-white transition-colors" href="/terms">Terms of Service</a>
+                <a class="text-gray-300/50 hover:text-white transition-colors" href="/security">Security</a>
+                <a class="text-gray-300/50 hover:text-white transition-colors" href="/sitemap">Sitemap</a>
             </div>
         </div>
     </footer>
-    <script>
-        // Simple scroll spy for nav underline
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
 
-            let current = "";
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('text-[#915EFF]', 'border-b-2', 'border-[#915EFF]', 'font-bold');
-                link.classList.add('text-gray-400');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('text-[#915EFF]', 'border-b-2', 'border-[#915EFF]', 'font-bold');
-                    link.classList.remove('text-gray-400');
-                }
-            });
-        });
-
-        // Backend Integration
-        const API_URL = "http://localhost:5000/api";
-
-        // Contact Form
-        const contactForm = document.getElementById('contactForm');
-        const contactFeedback = document.getElementById('contactFeedback');
-        const contactSubmitBtn = document.getElementById('contactSubmitBtn');
-
-        if (contactForm) {
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                contactSubmitBtn.disabled = true;
-                contactSubmitBtn.textContent = 'Sending...';
-                contactFeedback.classList.add('hidden');
-
-                const payload = {
-                    fullName: document.getElementById('contactFullName').value,
-                    email: document.getElementById('contactEmail').value,
-                    phone: document.getElementById('contactPhone').value,
-                    companyName: document.getElementById('contactCompany').value,
-                    serviceNeeded: document.getElementById('contactService').value,
-                    message: document.getElementById('contactMessage').value
-                };
-
-                try {
-                    const res = await fetch(`${API_URL}/leads`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    const data = await res.json();
-
-                    contactFeedback.classList.remove('hidden', 'bg-red-100', 'text-red-700');
-                    if (data.success) {
-                        contactFeedback.classList.add('bg-green-100', 'text-green-700');
-                        contactFeedback.textContent = data.message;
-                        contactForm.reset();
-                    } else {
-                        contactFeedback.classList.add('bg-red-100', 'text-red-700');
-                        contactFeedback.textContent = data.message || 'Error submitting request.';
-                    }
-                } catch (err) {
-                    contactFeedback.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-                    contactFeedback.classList.add('bg-red-100', 'text-red-700');
-                    contactFeedback.textContent = 'Network error. Please try again.';
-                } finally {
-                    contactSubmitBtn.disabled = false;
-                    contactSubmitBtn.textContent = 'Send Request';
-                }
-            });
-        }
-
-        // Careers Modal
-        const careersModal = document.getElementById('careersModal');
-        const openCareersModalBtn = document.getElementById('openCareersModalBtn');
-        const closeCareersModalBtn = document.getElementById('closeCareersModalBtn');
-        const careersForm = document.getElementById('careersForm');
-        const careersFeedback = document.getElementById('careersFeedback');
-        const careersSubmitBtn = document.getElementById('careersSubmitBtn');
-
-        if (openCareersModalBtn) {
-            openCareersModalBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                careersModal.classList.remove('hidden');
-            });
-        }
-
-        if (closeCareersModalBtn) {
-            closeCareersModalBtn.addEventListener('click', () => {
-                careersModal.classList.add('hidden');
-            });
-        }
-
-        if (careersForm) {
-            careersForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                careersSubmitBtn.disabled = true;
-                careersSubmitBtn.textContent = 'Submitting...';
-                careersFeedback.classList.add('hidden');
-
-                const payload = {
-                    fullName: document.getElementById('careerFullName').value,
-                    email: document.getElementById('careerEmail').value,
-                    phone: document.getElementById('careerPhone').value,
-                    positionApplied: document.getElementById('careerPosition').value,
-                    experience: document.getElementById('careerExperience').value,
-                    message: document.getElementById('careerMessage').value,
-                    resumeUrl: document.getElementById('careerResume').value
-                };
-
-                try {
-                    const res = await fetch(`${API_URL}/applications`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    const data = await res.json();
-
-                    careersFeedback.classList.remove('hidden', 'bg-red-100', 'text-red-700');
-                    if (data.success) {
-                        careersFeedback.classList.add('bg-green-100', 'text-green-700');
-                        careersFeedback.textContent = data.message;
-                        careersForm.reset();
-                        setTimeout(() => careersModal.classList.add('hidden'), 3000);
-                    } else {
-                        careersFeedback.classList.add('bg-red-100', 'text-red-700');
-                        careersFeedback.textContent = data.message || 'Error submitting application.';
-                    }
-                } catch (err) {
-                    careersFeedback.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-                    careersFeedback.classList.add('bg-red-100', 'text-red-700');
-                    careersFeedback.textContent = 'Network error. Please try again.';
-                } finally {
-                    careersSubmitBtn.disabled = false;
-                    careersSubmitBtn.textContent = 'Submit Application';
-                }
-            });
-        }
-    </script>
-
-    <!-- Careers Modal -->
-    <div id="careersModal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
-        aria-modal="true">
+    <!-- ══════════════════════════════════════════════════════
+         CAREERS MODAL
+    ══════════════════════════════════════════════════════ -->
+    <div id="careersModal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="careers-modal-title"
+        role="dialog" aria-modal="true" aria-hidden="true">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 bg-[#0b080c] bg-opacity-75 transition-opacity" aria-hidden="true"
                 id="closeCareersModalBg"></div>
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">â€‹</span>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
             <div
                 class="inline-block align-bottom bg-[#0b080c] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="bg-[#0b080c] px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                            <h3 class="text-lg leading-6 font-medium text-white" id="modal-title">Apply for a Position
+                            <h3 class="text-lg leading-6 font-medium text-white" id="careers-modal-title">Apply for a
+                                Position
                             </h3>
                             <div class="mt-4">
-                                <form id="careersForm" class="space-y-4">
+                                <form id="careersForm" class="space-y-4" novalidate>
+                                    <!-- Honeypot -->
+                                    <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                                        <label for="career_hp">Leave this field empty</label>
+                                        <input type="text" id="career_hp" name="career_hp" tabindex="-1" autocomplete="off" data-honeypot>
+                                    </div>
+
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300">Full Name</label>
-                                        <input type="text" id="careerFullName" required=""
-                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm">
+                                        <label class="block text-sm font-medium text-gray-300" for="careerFullName">Full Name</label>
+                                        <input type="text" id="careerFullName" required autocomplete="name" maxlength="100"
+                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300">Email Address</label>
-                                        <input type="email" id="careerEmail" required=""
-                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm">
+                                        <label class="block text-sm font-medium text-gray-300" for="careerEmail">Email Address</label>
+                                        <input type="email" id="careerEmail" required autocomplete="email" maxlength="150"
+                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300">Phone Number</label>
-                                        <input type="tel" id="careerPhone" required=""
-                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm">
+                                        <label class="block text-sm font-medium text-gray-300" for="careerPhone">Phone Number</label>
+                                        <input type="tel" id="careerPhone" required autocomplete="tel" maxlength="20"
+                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300">Position Applied
+                                        <label class="block text-sm font-medium text-gray-300" for="careerPosition">Position Applied
                                             For</label>
                                         <select id="careerPosition" required
                                             class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm bg-[#151030] text-white">
@@ -971,22 +989,23 @@
                                         </select>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300">Experience</label>
-                                        <textarea id="careerExperience" rows="2"
-                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm"></textarea>
+                                        <label class="block text-sm font-medium text-gray-300" for="careerExperience">Experience</label>
+                                        <textarea id="careerExperience" rows="2" maxlength="500"
+                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]"></textarea>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300">Message</label>
-                                        <textarea id="careerMessage" rows="2"
-                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm"></textarea>
+                                        <label class="block text-sm font-medium text-gray-300" for="careerMessage">Message</label>
+                                        <textarea id="careerMessage" rows="2" maxlength="2000"
+                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]"></textarea>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300">Resume URL
+                                        <label class="block text-sm font-medium text-gray-300" for="careerResume">Resume URL
                                             (Optional)</label>
                                         <input type="url" id="careerResume"
-                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm">
+                                            placeholder="https://drive.google.com/..."
+                                            class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]">
                                     </div>
-                                    <div id="careersFeedback" class="hidden rounded p-3 text-sm font-semibold"></div>
+                                    <div id="careersFeedback" class="hidden rounded p-3 text-sm font-semibold" aria-live="polite" role="alert"></div>
                                     <div
                                         class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse border-t border-gray-200 -mx-4 -mb-4 mt-4 bg-[#151030]">
                                         <button type="submit" id="careersSubmitBtn"
@@ -1003,231 +1022,59 @@
             </div>
         </div>
     </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         SERVICE DETAILS MODAL
+    ══════════════════════════════════════════════════════ -->
+    <div id="serviceModal" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog" aria-modal="true"
+        aria-labelledby="serviceModalTitle" aria-hidden="true">
+        <div class="flex items-center justify-center min-h-screen px-4 py-8">
+            <!-- Backdrop -->
+            <div class="fixed inset-0 bg-black/70 backdrop-blur-sm"></div>
+            <!-- Panel -->
+            <div class="relative bg-[#0b080c] border border-[#2d2560] rounded-2xl shadow-2xl max-w-lg w-full p-8 z-10">
+                <button id="serviceModalClose"
+                    class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+                    aria-label="Close service details">
+                    <span class="material-symbols-outlined text-2xl" aria-hidden="true">close</span>
+                </button>
+                <h3 id="serviceModalTitle" class="font-headline-md text-white text-2xl mb-4 pr-8"></h3>
+                <p id="serviceModalDesc" class="text-gray-400 mb-6 leading-relaxed"></p>
+                <h4 class="text-white font-semibold mb-3 text-sm uppercase tracking-wider">What's Included</h4>
+                <ul id="serviceModalBenefits" class="space-y-2 mb-8"></ul>
+                <button id="serviceModalRequestBtn"
+                    class="w-full bg-[#915EFF] text-white py-3 rounded-lg font-button text-button uppercase tracking-wider hover:bg-[#151030] transition-all hover:scale-105 transition-transform duration-300">
+                    Request This Service
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         SCRIPTS — load order matters
+         1. GSAP (already in <head>)
+         2. AOS
+         3. Supabase CDN
+         4. supabase-config.js (initialises supabaseClient)
+         5. app.js (all functionality)
+    ══════════════════════════════════════════════════════ -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Supabase JS v2 via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <!-- Site configuration (anon key lives here) -->
+    <script src="supabase-config.js"></script>
+    <!-- All site functionality -->
+    <script src="app.js" defer></script>
+
+    <!-- Mobile menu close button wired inline (needs no module) -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true,
-                offset: 50
-            });
-        });
-        // Timeline Scroll Animation
-        const timelineContainer = document.getElementById('timeline-container');
-        const timelineProgress = document.getElementById('timeline-progress');
-        const timelineIcons = document.querySelectorAll('.timeline-icon');
-
-        if (timelineContainer && timelineProgress) {
-            window.addEventListener('scroll', () => {
-                const rect = timelineContainer.getBoundingClientRect();
-                const containerTop = rect.top + window.scrollY;
-                const containerHeight = timelineContainer.offsetHeight;
-
-                // Calculate scroll distance within the container
-                // We want the line to start moving when the top of the container hits the middle of the screen
-                const windowHalf = window.innerHeight / 2;
-                let scrollPos = window.scrollY + windowHalf - containerTop;
-
-                // Clamp the value between 0 and containerHeight
-                scrollPos = Math.max(0, Math.min(scrollPos, containerHeight));
-
-                // Set the height of the progress line
-                timelineProgress.style.height = `${scrollPos}px`;
-
-                // Highlight icons when the line reaches them
-                timelineIcons.forEach(icon => {
-                    const iconTop = icon.getBoundingClientRect().top + window.scrollY;
-                    if (window.scrollY + windowHalf > iconTop + 20) {
-                        icon.classList.add('bg-[#915EFF]', 'border-[#915EFF]', 'shadow-[0_0_20px_rgba(27,77,255,0.5)]');
-                        icon.classList.remove('bg-[#0b080c]', 'border-[#151030]');
-                    } else {
-                        icon.classList.remove('bg-[#915EFF]', 'border-[#915EFF]', 'shadow-[0_0_20px_rgba(27,77,255,0.5)]');
-                        icon.classList.add('bg-[#0b080c]', 'border-[#151030]');
-                    }
-                });
-            });
+      document.addEventListener('DOMContentLoaded', function() {
+        var closeBtn = document.getElementById('mobileMenuCloseBtn');
+        var menuBtn  = document.getElementById('mobileMenuBtn');
+        if (closeBtn && menuBtn) {
+          closeBtn.addEventListener('click', function() { menuBtn.click(); });
         }
-
-        // Typewriter Effect
-        const phrases = [
-            "Premium Call Center Solutions",
-            "High-Intent Lead Generation",
-            "Enterprise Back-Office Support",
-            "24/7 Global Customer Care"
-        ];
-
-        let phraseIndex = 0;
-        let letterIndex = 0;
-        let isDeleting = false;
-        let typeSpeed = 100;
-        const typewriterElement = document.getElementById('typewriter-text');
-
-        function typeWriter() {
-            if (!typewriterElement) return;
-
-            const currentPhrase = phrases[phraseIndex];
-
-            if (isDeleting) {
-                typewriterElement.textContent = currentPhrase.substring(0, letterIndex - 1);
-                letterIndex--;
-                typeSpeed = 50; // faster when deleting
-            } else {
-                typewriterElement.textContent = currentPhrase.substring(0, letterIndex + 1);
-                letterIndex++;
-                typeSpeed = 100;
-            }
-
-            // If finished typing a word
-            if (!isDeleting && letterIndex === currentPhrase.length) {
-                isDeleting = true;
-                typeSpeed = 2000; // Pause at the end of word
-            }
-            // If finished deleting a word
-            else if (isDeleting && letterIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500; // Pause before typing next word
-            }
-
-            setTimeout(typeWriter, typeSpeed);
-        }
-
-        // Start typing
-        if (typewriterElement) {
-            setTimeout(typeWriter, 1000);
-        }
-
-        // --- GSAP Scroll Animations for 3D Section ---
-        if (typeof gsap !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-
-            const scrollSection = document.getElementById('why-choose-us-scroll');
-            if (scrollSection) {
-                // Determine layout behavior based on screen size
-                const isMobile = window.innerWidth < 768;
-
-                if (!isMobile) {
-                    const tl = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: scrollSection,
-                            start: "top top",
-                            end: "+=300vh", // Match the 400vh total height (100vh pinned + 300vh scroll)
-                            scrub: 1,
-                            pin: true
-                        }
-                    });
-
-                    // Title fades in, stays a bit, then fades out
-                    tl.to("#why-choose-title", { opacity: 1, y: 0, duration: 1, ease: "power2.out" })
-                        .to("#why-choose-title", { opacity: 0, y: -20, duration: 1, delay: 0.5 });
-
-                    // Cards fly in sequentially
-                    const cards = gsap.utils.toArray('.gsap-feature-card');
-                    cards.forEach((card, i) => {
-                        tl.to(card, {
-                            opacity: 1,
-                            y: 0,
-                            duration: 1,
-                            ease: "power2.out"
-                        }, "-=0.5");
-                    });
-
-                    // Pause at end so user can read everything before it unpins
-                    tl.to({}, { duration: 2 });
-                }
-            }
-        }
-    </script>
-    <!-- Form Submission Script -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('contactForm');
-            const feedback = document.getElementById('contactFeedback');
-            const submitBtn = document.getElementById('contactSubmitBtn');
-
-            if (form) {
-                form.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-
-                    const originalBtnText = submitBtn.innerText;
-                    submitBtn.innerText = 'Sending...';
-                    submitBtn.disabled = true;
-                    feedback.classList.add('hidden');
-                    feedback.classList.remove('bg-green-500/20', 'text-green-400', 'border-green-500/30', 'bg-[#915EFF]/20', 'text-[#915EFF]', 'border-[#915EFF]/30', 'border');
-
-                    const formData = {
-                        fullName: document.getElementById('contactFullName').value,
-                        email: document.getElementById('contactEmail').value,
-                        phone: document.getElementById('contactPhone').value,
-                        companyName: document.getElementById('contactCompany').value,
-                        serviceNeeded: document.getElementById('contactService').value,
-                        message: document.getElementById('contactMessage').value
-                    };
-
-                    try {
-                        const response = await fetch('http://localhost:5000/api/leads', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(formData)
-                        });
-
-                        const data = await response.json();
-
-                        if (response.ok) {
-                            feedback.innerText = 'Message sent successfully! Our team will contact you soon.';
-                            feedback.classList.remove('hidden');
-                            feedback.classList.add('bg-green-500/20', 'text-green-400', 'border', 'border-green-500/30');
-                            form.reset();
-                        } else {
-                            throw new Error(data.message || 'Something went wrong. Please try again.');
-                        }
-                    } catch (error) {
-                        feedback.innerText = error.message || 'Failed to connect to the server. Please check if the backend is running.';
-                        feedback.classList.remove('hidden');
-                        feedback.classList.add('bg-[#915EFF]/20', 'text-[#915EFF]', 'border', 'border-[#915EFF]/30');
-                    } finally {
-                        submitBtn.innerText = originalBtnText;
-                        submitBtn.disabled = false;
-                    }
-                });
-            }
-        });
-    </script>
-
-    <!-- Stats Counter Animation -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-                gsap.registerPlugin(ScrollTrigger);
-                
-                const stats = document.querySelectorAll('.stat-num');
-                if (stats.length > 0) {
-                    stats.forEach(stat => {
-                        const target = parseInt(stat.getAttribute('data-target'));
-                        
-                        ScrollTrigger.create({
-                            trigger: "#stats",
-                            start: "top 85%", // when the top of the section hits 85% down the viewport
-                            onEnter: () => {
-                                gsap.to(stat, {
-                                    innerHTML: target,
-                                    duration: 2.5,
-                                    ease: "power3.out",
-                                    snap: { innerHTML: 1 }, // animate whole numbers
-                                    onUpdate: function() {
-                                        stat.innerHTML = Math.round(this.targets()[0].innerHTML);
-                                    }
-                                });
-                            },
-                            once: true
-                        });
-                    });
-                }
-            }
-        });
+      });
     </script>
 </body>
 
