@@ -51,6 +51,66 @@
             outline-offset: 2px;
             border-radius: 4px;
         }
+
+        /* Hero Intro Animations */
+        .hero-hidden { opacity: 0 !important; pointer-events: none; }
+        
+        /* Navbar Logo Sizing */
+        .navbar-logo {
+            width: auto;
+            height: 56px;
+            max-width: 220px;
+            object-fit: contain;
+            display: block;
+        }
+        @media (min-width: 768px) {
+            .navbar-logo { height: 70px; }
+        }
+        @media (min-width: 1024px) {
+            .navbar-logo { height: 84px; }
+        }
+
+        /* Color Pulse Animation */
+        .color-pulse {
+            animation: colorPulse 6s infinite ease-in-out;
+            will-change: color;
+        }
+        @keyframes colorPulse {
+            0%, 100% { color: #FFFFFF; }
+            33% { color: #E8E0FF; }
+            66% { color: #C9A7FF; }
+        }
+
+        /* Scan Bar Text Effect */
+        .scan-text-effect {
+            position: relative;
+            display: inline-block;
+        }
+        .scan-text-effect::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            color: transparent;
+            background-image: 
+                linear-gradient(90deg, transparent 0%, transparent 45%, rgba(255,255,255,0.9) 48%, rgba(145,94,255,1) 50%, rgba(255,255,255,0.9) 52%, transparent 55%, transparent 100%),
+                linear-gradient(90deg, transparent 0%, transparent 20%, rgba(201,167,255,0.7) 25%, transparent 30%, transparent 100%);
+            background-size: 200% 100%, 300% 100%;
+            background-repeat: no-repeat;
+            background-clip: text;
+            -webkit-background-clip: text;
+            pointer-events: none;
+            animation: scanShine 7s infinite linear;
+            z-index: 2;
+            opacity: 0.85;
+            will-change: background-position;
+        }
+        @keyframes scanShine {
+            0% { background-position: 200% 0, 300% 0; }
+            100% { background-position: -100% 0, -100% 0; }
+        }
     </style>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- GSAP loaded before app.js -->
@@ -76,11 +136,23 @@
 
         <!-- Content Container -->
         <div class="relative w-full h-full flex flex-col justify-between p-6 md:p-12 z-20">
+            
+            <!-- Intro Sequence Overlay -->
+            <div id="heroIntroOverlay" class="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
+                <h1 id="introHeading" data-text="Welcome to Leads BPO" class="scan-text-effect text-[38px] md:text-[52px] lg:text-[72px] font-bold text-white tracking-tight drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] leading-[1.1] absolute opacity-0" style="filter: blur(12px); transform: translateY(30px) scale(0.9);">
+                    Welcome to Leads BPO
+                </h1>
+                <p id="introParagraph" class="color-pulse font-light text-[18px] md:text-[20px] lg:text-[22px] max-w-[700px] mx-auto tracking-normal leading-[1.7] absolute opacity-0" style="filter: blur(12px); transform: translateY(20px);">
+                    Scale your operations with dedicated teams for reliable customer support, high-intent lead
+                    generation, and efficient back-office processing.
+                </p>
+            </div>
+
             <!-- Navigation -->
-            <nav class="w-full flex items-center justify-between" role="navigation" aria-label="Main navigation">
-                <div class="font-['Dancing_Script'] text-3xl md:text-4xl text-white tracking-wide">
-                    Leads BPO
-                </div>
+            <nav id="mainNav" class="w-full flex items-center justify-between" role="navigation" aria-label="Main navigation">
+                <a href="#home" id="navLogoWrapper" class="flex items-center justify-start opacity-0" aria-label="Leads BPO Home">
+                    <img src="logo svg.svg" alt="Leads BPO Logo" class="navbar-logo" />
+                </a>
 
                 <!-- Desktop Nav -->
                 <div
@@ -116,16 +188,15 @@
             </nav>
 
             <!-- Main Hero Content -->
-            <div class="flex flex-col items-center text-center mt-[-10vh]">
-                <h1
-                    class="font-['Instrument_Serif'] text-6xl md:text-8xl lg:text-9xl text-white mb-6 tracking-wide drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">
-                    Welcome To ,<br />Leads BPO
+            <div id="mainHeroContent" class="hero-hidden flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto px-4 mt-[-5vh]">
+                <h1 data-text="Welcome to Leads BPO" class="scan-text-effect text-[38px] md:text-[52px] lg:text-[72px] font-bold text-white mb-6 tracking-tight drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] leading-[1.1]">
+                    Welcome to Leads BPO
                 </h1>
-                <p class="font-light text-white/80 text-lg md:text-xl max-w-xl mx-auto tracking-wide leading-relaxed">
+                <p class="color-pulse font-light text-[18px] md:text-[20px] lg:text-[22px] max-w-[700px] mx-auto tracking-normal leading-[1.7]">
                     Scale your operations with dedicated teams for reliable customer support, high-intent lead
                     generation, and efficient back-office processing.
                 </p>
-                <div class="mt-10 flex flex-col sm:flex-row items-center gap-6">
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
                     <button data-scroll="services"
                         class="bg-white text-black px-8 py-4 rounded-full text-sm font-medium tracking-widest uppercase hover:bg-white/90 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]">
                         Explore Our Services
@@ -138,7 +209,7 @@
             </div>
 
             <!-- Scroll Indicator -->
-            <div class="flex justify-center pb-4">
+            <div id="scrollIndicator" class="hero-hidden flex justify-center pb-4">
                 <div class="w-6 h-10 border border-white/30 rounded-full flex justify-center p-1">
                     <div class="w-1 h-2 bg-white rounded-full animate-bounce"></div>
                 </div>
@@ -1074,6 +1145,82 @@
         if (closeBtn && menuBtn) {
           closeBtn.addEventListener('click', function() { menuBtn.click(); });
         }
+      });
+    </script>
+
+    <!-- Hero Intro Animation Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+          const hasPlayed = sessionStorage.getItem("heroIntroPlayed");
+          const overlay = document.getElementById("heroIntroOverlay");
+          const introHeading = document.getElementById("introHeading");
+          const introParagraph = document.getElementById("introParagraph");
+          const mainContent = document.getElementById("mainHeroContent");
+          const scrollIndicator = document.getElementById("scrollIndicator");
+          const navLogoWrapper = document.getElementById("navLogoWrapper");
+
+          // Logo fade-in on load
+          if (navLogoWrapper) {
+              gsap.to(navLogoWrapper, { opacity: 1, duration: 1.5, ease: "power2.out" });
+          }
+
+          if (hasPlayed || !overlay) {
+              if (overlay) overlay.remove();
+              if (mainContent) mainContent.classList.remove("hero-hidden");
+              if (scrollIndicator) scrollIndicator.classList.remove("hero-hidden");
+          } else {
+              sessionStorage.setItem("heroIntroPlayed", "true");
+              
+              const tl = gsap.timeline({
+                  onComplete: () => {
+                      overlay.remove();
+                      gsap.to([mainContent, scrollIndicator], {
+                          opacity: 1,
+                          duration: 0.7,
+                          ease: "power2.out",
+                          onStart: () => {
+                              mainContent.classList.remove("hero-hidden");
+                              scrollIndicator.classList.remove("hero-hidden");
+                          }
+                      });
+                  }
+              });
+
+              // 1 & 2. Show heading
+              tl.to(introHeading, {
+                  opacity: 1,
+                  scale: 1,
+                  filter: "blur(0px)",
+                  y: 0,
+                  duration: 0.8,
+                  ease: "power3.out"
+              })
+              // 3 & 4. Keep title visible for 2 seconds, then animate out
+              .to(introHeading, {
+                  opacity: 0,
+                  scale: 0.95,
+                  filter: "blur(12px)",
+                  y: -30,
+                  duration: 0.7,
+                  ease: "power2.inOut"
+              }, "+=2")
+              // 5. Reveal supporting paragraph
+              .to(introParagraph, {
+                  opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
+                  duration: 0.8,
+                  ease: "power3.out"
+              })
+              // 6. Keep paragraph visible for 5 seconds, then animate out
+              .to(introParagraph, {
+                  opacity: 0,
+                  y: -20,
+                  filter: "blur(12px)",
+                  duration: 0.7,
+                  ease: "power2.inOut"
+              }, "+=5");
+          }
       });
     </script>
 </body>
