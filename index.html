@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Leads BPO | Professional BPO &amp; Call Center Solutions</title>
-    <meta name="description" content="Leads BPO provides premium outsourcing solutions including call center, lead generation, customer support, telesales, appointment setting, and medical billing services.">
+    <meta name="description"
+        content="Leads BPO provides premium outsourcing solutions including call center, lead generation, customer support, telesales, appointment setting, and medical billing services.">
+    <link rel="icon" href="LEADS_BPO_Black_Background_Outlined.svg" type="image/svg+xml">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
     <link
@@ -41,7 +43,7 @@
         }
 
         /* FAQ smooth expand */
-        details > p {
+        details>p {
             transition: all 0.3s ease;
         }
 
@@ -53,8 +55,11 @@
         }
 
         /* Hero Intro Animations */
-        .hero-hidden { opacity: 0 !important; pointer-events: none; }
-        
+        .hero-hidden {
+            opacity: 0 !important;
+            pointer-events: none;
+        }
+
         /* Navbar Logo Sizing */
         .navbar-logo {
             width: auto;
@@ -63,11 +68,17 @@
             object-fit: contain;
             display: block;
         }
+
         @media (min-width: 768px) {
-            .navbar-logo { height: 70px; }
+            .navbar-logo {
+                height: 70px;
+            }
         }
+
         @media (min-width: 1024px) {
-            .navbar-logo { height: 84px; }
+            .navbar-logo {
+                height: 84px;
+            }
         }
 
         /* Color Pulse Animation */
@@ -75,10 +86,21 @@
             animation: colorPulse 6s infinite ease-in-out;
             will-change: color;
         }
+
         @keyframes colorPulse {
-            0%, 100% { color: #FFFFFF; }
-            33% { color: #E8E0FF; }
-            66% { color: #C9A7FF; }
+
+            0%,
+            100% {
+                color: #FFFFFF;
+            }
+
+            33% {
+                color: #E8E0FF;
+            }
+
+            66% {
+                color: #C9A7FF;
+            }
         }
 
         /* Scan Bar Text Effect */
@@ -86,6 +108,7 @@
             position: relative;
             display: inline-block;
         }
+
         .scan-text-effect::after {
             content: attr(data-text);
             position: absolute;
@@ -94,9 +117,9 @@
             width: 100%;
             height: 100%;
             color: transparent;
-            background-image: 
-                linear-gradient(90deg, transparent 0%, transparent 45%, rgba(255,255,255,0.9) 48%, rgba(145,94,255,1) 50%, rgba(255,255,255,0.9) 52%, transparent 55%, transparent 100%),
-                linear-gradient(90deg, transparent 0%, transparent 20%, rgba(201,167,255,0.7) 25%, transparent 30%, transparent 100%);
+            background-image:
+                linear-gradient(90deg, transparent 0%, transparent 45%, rgba(255, 255, 255, 0.9) 48%, rgba(145, 94, 255, 1) 50%, rgba(255, 255, 255, 0.9) 52%, transparent 55%, transparent 100%),
+                linear-gradient(90deg, transparent 0%, transparent 20%, rgba(201, 167, 255, 0.7) 25%, transparent 30%, transparent 100%);
             background-size: 200% 100%, 300% 100%;
             background-repeat: no-repeat;
             background-clip: text;
@@ -107,9 +130,15 @@
             opacity: 0.85;
             will-change: background-position;
         }
+
         @keyframes scanShine {
-            0% { background-position: 200% 0, 300% 0; }
-            100% { background-position: -100% 0, -100% 0; }
+            0% {
+                background-position: 200% 0, 300% 0;
+            }
+
+            100% {
+                background-position: -100% 0, -100% 0;
+            }
         }
     </style>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -136,21 +165,28 @@
 
         <!-- Content Container -->
         <div class="relative w-full h-full flex flex-col justify-between p-6 md:p-12 z-20">
-            
+
             <!-- Intro Sequence Overlay -->
-            <div id="heroIntroOverlay" class="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
-                <h1 id="introHeading" data-text="Welcome to Leads BPO" class="scan-text-effect text-[38px] md:text-[52px] lg:text-[72px] font-bold text-white tracking-tight drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] leading-[1.1] absolute opacity-0" style="filter: blur(12px); transform: translateY(30px) scale(0.9);">
+            <div id="heroIntroOverlay"
+                class="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
+                <h1 id="introHeading" data-text="Welcome to Leads BPO"
+                    class="scan-text-effect text-[38px] md:text-[52px] lg:text-[72px] font-bold text-white tracking-tight drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] leading-[1.1] absolute opacity-0"
+                    style="filter: blur(12px); transform: translateY(30px) scale(0.9);">
                     Welcome to Leads BPO
                 </h1>
-                <p id="introParagraph" class="color-pulse font-light text-[18px] md:text-[20px] lg:text-[22px] max-w-[700px] mx-auto tracking-normal leading-[1.7] absolute opacity-0" style="filter: blur(12px); transform: translateY(20px);">
+                <p id="introParagraph"
+                    class="color-pulse font-light text-[18px] md:text-[20px] lg:text-[22px] max-w-[700px] mx-auto tracking-normal leading-[1.7] absolute opacity-0"
+                    style="filter: blur(12px); transform: translateY(20px);">
                     Scale your operations with dedicated teams for reliable customer support, high-intent lead
                     generation, and efficient back-office processing.
                 </p>
             </div>
 
             <!-- Navigation -->
-            <nav id="mainNav" class="w-full flex items-center justify-between" role="navigation" aria-label="Main navigation">
-                <a href="#home" id="navLogoWrapper" class="flex items-center justify-start opacity-0" aria-label="Leads BPO Home">
+            <nav id="mainNav" class="w-full flex items-center justify-between" role="navigation"
+                aria-label="Main navigation">
+                <a href="#home" id="navLogoWrapper" class="flex items-center justify-start opacity-0"
+                    aria-label="Leads BPO Home">
                     <img src="logo svg.svg" alt="Leads BPO Logo" class="navbar-logo" />
                 </a>
 
@@ -177,22 +213,22 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button id="mobileMenuBtn"
-                        aria-label="Open navigation menu"
-                        aria-expanded="false"
-                        aria-controls="mobileMenuOverlay"
-                        class="text-white p-1">
+                    <button id="mobileMenuBtn" aria-label="Open navigation menu" aria-expanded="false"
+                        aria-controls="mobileMenuOverlay" class="text-white p-1">
                         <span class="material-symbols-outlined text-3xl" aria-hidden="true">menu</span>
                     </button>
                 </div>
             </nav>
 
             <!-- Main Hero Content -->
-            <div id="mainHeroContent" class="hero-hidden flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto px-4 mt-[-5vh]">
-                <h1 data-text="Welcome to Leads BPO" class="scan-text-effect text-[38px] md:text-[52px] lg:text-[72px] font-bold text-white mb-6 tracking-tight drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] leading-[1.1]">
+            <div id="mainHeroContent"
+                class="hero-hidden flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto px-4 mt-[-5vh]">
+                <h1 data-text="Welcome to Leads BPO"
+                    class="scan-text-effect text-[38px] md:text-[52px] lg:text-[72px] font-bold text-white mb-6 tracking-tight drop-shadow-[0_0_25px_rgba(255,255,255,0.2)] leading-[1.1]">
                     Welcome to Leads BPO
                 </h1>
-                <p class="color-pulse font-light text-[18px] md:text-[20px] lg:text-[22px] max-w-[700px] mx-auto tracking-normal leading-[1.7]">
+                <p
+                    class="color-pulse font-light text-[18px] md:text-[20px] lg:text-[22px] max-w-[700px] mx-auto tracking-normal leading-[1.7]">
                     Scale your operations with dedicated teams for reliable customer support, high-intent lead
                     generation, and efficient back-office processing.
                 </p>
@@ -220,12 +256,8 @@
     <!-- ══════════════════════════════════════════════════════
          MOBILE MENU OVERLAY
     ══════════════════════════════════════════════════════ -->
-    <div id="mobileMenuOverlay"
-        class="hidden fixed inset-0 z-50 md:hidden"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Mobile navigation"
-        aria-hidden="true">
+    <div id="mobileMenuOverlay" class="hidden fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true"
+        aria-label="Mobile navigation" aria-hidden="true">
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
         <!-- Menu Panel -->
@@ -237,12 +269,18 @@
                 </button>
             </div>
             <nav class="flex flex-col gap-6" aria-label="Mobile navigation">
-                <a href="#home"   class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Home</a>
-                <a href="#about"  class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">About</a>
-                <a href="#services" class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Services</a>
-                <a href="#careers"  class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Careers</a>
-                <a href="#faqs"     class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">FAQs</a>
-                <a href="#contact"  class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Contact</a>
+                <a href="#home"
+                    class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Home</a>
+                <a href="#about"
+                    class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">About</a>
+                <a href="#services"
+                    class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Services</a>
+                <a href="#careers"
+                    class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Careers</a>
+                <a href="#faqs"
+                    class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">FAQs</a>
+                <a href="#contact"
+                    class="text-white/80 hover:text-white text-lg tracking-widest uppercase transition-colors">Contact</a>
             </nav>
             <div class="mt-auto">
                 <button data-scroll="contact"
@@ -278,10 +316,11 @@
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Call Center</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Full-spectrum inbound and outbound voice services handling
                         thousands of queries daily with precision.</p>
-                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
-                        data-service="Call Center"
-                        aria-label="View details for Call Center service">
-                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    <button
+                        class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Call Center" aria-label="View details for Call Center service">
+                        View Details <span class="material-symbols-outlined text-[16px]"
+                            aria-hidden="true">arrow_forward</span>
                     </button>
                 </div>
                 <!-- Card 2 -->
@@ -294,10 +333,11 @@
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Lead Gen</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Advanced lead identification and qualification techniques to
                         fuel your sales pipeline with high-conversion prospects.</p>
-                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
-                        data-service="Lead Generation"
-                        aria-label="View details for Lead Generation service">
-                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    <button
+                        class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Lead Generation" aria-label="View details for Lead Generation service">
+                        View Details <span class="material-symbols-outlined text-[16px]"
+                            aria-hidden="true">arrow_forward</span>
                     </button>
                 </div>
                 <!-- Card 3 -->
@@ -310,10 +350,11 @@
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Customer Support</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Omnichannel support across chat, email, and social media to
                         ensure your customers feel heard and valued.</p>
-                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
-                        data-service="Customer Support"
-                        aria-label="View details for Customer Support service">
-                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    <button
+                        class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Customer Support" aria-label="View details for Customer Support service">
+                        View Details <span class="material-symbols-outlined text-[16px]"
+                            aria-hidden="true">arrow_forward</span>
                     </button>
                 </div>
                 <!-- Card 4 -->
@@ -326,10 +367,11 @@
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Telesales</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Persuasive and professional sales strategies designed to
                         close deals and drive immediate revenue growth.</p>
-                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
-                        data-service="Telesales"
-                        aria-label="View details for Telesales service">
-                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    <button
+                        class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Telesales" aria-label="View details for Telesales service">
+                        View Details <span class="material-symbols-outlined text-[16px]"
+                            aria-hidden="true">arrow_forward</span>
                     </button>
                 </div>
                 <!-- Card 5 -->
@@ -342,10 +384,11 @@
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Appointment Setting</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Expert coordination to fill your sales team's calendar with
                         meetings with key decision-makers.</p>
-                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
-                        data-service="Appointment Setting"
-                        aria-label="View details for Appointment Setting service">
-                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    <button
+                        class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Appointment Setting" aria-label="View details for Appointment Setting service">
+                        View Details <span class="material-symbols-outlined text-[16px]"
+                            aria-hidden="true">arrow_forward</span>
                     </button>
                 </div>
                 <!-- Card 6 -->
@@ -358,10 +401,11 @@
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Back Office</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Streamlining administrative tasks from data entry to complex
                         documentation and processing.</p>
-                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
-                        data-service="Back Office"
-                        aria-label="View details for Back Office service">
-                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    <button
+                        class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Back Office" aria-label="View details for Back Office service">
+                        View Details <span class="material-symbols-outlined text-[16px]"
+                            aria-hidden="true">arrow_forward</span>
                     </button>
                 </div>
                 <!-- Card 7 -->
@@ -374,10 +418,11 @@
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Biz Dev</h3>
                     <p class="text-gray-400 mb-6 flex-grow">Strategic market analysis and outreach to expand your
                         business presence in new territories.</p>
-                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
-                        data-service="Business Development"
-                        aria-label="View details for Business Development service">
-                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    <button
+                        class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Business Development" aria-label="View details for Business Development service">
+                        View Details <span class="material-symbols-outlined text-[16px]"
+                            aria-hidden="true">arrow_forward</span>
                     </button>
                 </div>
                 <!-- Card 8 -->
@@ -390,10 +435,11 @@
                     <h3 class="font-headline-sm text-[20px] text-white mb-3">Medical Billing</h3>
                     <p class="text-gray-400 mb-6 flex-grow">End-to-end revenue cycle management, accurate claim
                         submission, and efficient denial processing for healthcare providers.</p>
-                    <button class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
-                        data-service="Medical Billing"
-                        aria-label="View details for Medical Billing service">
-                        View Details <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                    <button
+                        class="inline-flex items-center gap-2 text-[#915EFF] font-button text-button hover:gap-3 transition-all bg-transparent"
+                        data-service="Medical Billing" aria-label="View details for Medical Billing service">
+                        View Details <span class="material-symbols-outlined text-[16px]"
+                            aria-hidden="true">arrow_forward</span>
                     </button>
                 </div>
                 <!-- CTA Card -->
@@ -566,33 +612,40 @@
          STATS SECTION
     ══════════════════════════════════════════════════════ -->
     <section class="py-24 relative overflow-hidden bg-[#915EFF] text-white" id="stats">
-        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
+        <div
+            class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+        </div>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-black/20 via-transparent to-black/20">
+        </div>
 
         <div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
             <div class="text-center" data-aos="fade-up" data-aos-delay="0">
                 <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg">
                     <span class="stat-num" data-target="24">0</span>/7
                 </p>
-                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Support Availability</p>
+                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Support Availability
+                </p>
             </div>
             <div class="text-center" data-aos="fade-up" data-aos-delay="100">
                 <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg">
                     <span class="stat-num" data-target="1">0</span>M+
                 </p>
-                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Calls Handled Monthly</p>
+                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Calls Handled Monthly
+                </p>
             </div>
             <div class="text-center" data-aos="fade-up" data-aos-delay="200">
                 <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg">
                     <span class="stat-num" data-target="95">0</span>%
                 </p>
-                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Client Satisfaction</p>
+                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Client Satisfaction
+                </p>
             </div>
             <div class="text-center" data-aos="fade-up" data-aos-delay="300">
                 <p class="font-display-lg text-display-lg-mobile md:text-display-lg mb-2 drop-shadow-lg">
                     <span class="stat-num" data-target="7">0</span> Days
                 </p>
-                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Average Setup Time</p>
+                <p class="font-label-caps text-label-caps uppercase tracking-widest text-white/90">Average Setup Time
+                </p>
             </div>
         </div>
     </section>
@@ -613,28 +666,30 @@
                     </p>
                     <div class="space-y-6 mb-10">
                         <div class="flex items-center gap-4">
-                            <span class="material-symbols-outlined text-green-mint" aria-hidden="true">check_circle</span>
+                            <span class="material-symbols-outlined text-green-mint"
+                                aria-hidden="true">check_circle</span>
                             <span class="text-white font-semibold">Competitive Salaries &amp; Benefits</span>
                         </div>
                         <div class="flex items-center gap-4">
-                            <span class="material-symbols-outlined text-green-mint" aria-hidden="true">check_circle</span>
+                            <span class="material-symbols-outlined text-green-mint"
+                                aria-hidden="true">check_circle</span>
                             <span class="text-white font-semibold">Continuous Professional Training</span>
                         </div>
                         <div class="flex items-center gap-4">
-                            <span class="material-symbols-outlined text-green-mint" aria-hidden="true">check_circle</span>
+                            <span class="material-symbols-outlined text-green-mint"
+                                aria-hidden="true">check_circle</span>
                             <span class="text-white font-semibold">Dynamic &amp; Collaborative Culture</span>
                         </div>
                     </div>
                     <button
                         class="inline-block bg-[#915EFF] text-white px-10 py-4 rounded-lg font-button text-button uppercase tracking-wider text-center hover:bg-[#151030] transition-all self-start cursor-pointer hover:scale-105 transition-transform duration-300"
-                        id="openCareersModalBtn"
-                        aria-haspopup="dialog">
+                        id="openCareersModalBtn" aria-haspopup="dialog">
                         View Open Positions
                     </button>
                 </div>
                 <div class="lg:w-1/2 relative min-h-[400px]" data-aos="fade-left">
-                    <img class="absolute inset-0 w-full h-full object-cover"
-                        alt="Leads BPO Team collaborative culture" src="modern_team.png">
+                    <img class="absolute inset-0 w-full h-full object-cover" alt="Leads BPO Team collaborative culture"
+                        src="modern_team.png">
                 </div>
             </div>
         </div>
@@ -656,20 +711,24 @@
                 <div class="p-8 border border-border-subtle rounded-2xl flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 transition-all duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="0">
                     <div class="flex text-yellow-500 mb-6" aria-label="5 stars">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
                     </div>
                     <p class="text-gray-400 mb-8 flex-grow">"Leads BPO transformed our customer support from a
                         bottleneck into a competitive advantage. Their agents are professional and picked up our complex
                         software in record time."</p>
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full overflow-hidden">
-                            <img class="w-full h-full object-cover"
-                                alt="David Chen, CEO of Family Comes First"
-                                src="david family comes first.png">
+                            <img class="w-full h-full object-cover" alt="David Chen, CEO of Family Comes First"
+                                src="david.png">
                         </div>
                         <div>
                             <p class="font-headline-sm text-[16px] text-white">David</p>
@@ -681,20 +740,24 @@
                 <div class="p-8 border border-border-subtle rounded-2xl flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 transition-all duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="100">
                     <div class="flex text-yellow-500 mb-6" aria-label="5 stars">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
                     </div>
                     <p class="text-gray-400 mb-8 flex-grow">"Our sales pipeline has never been healthier. The lead
                         qualification team at Leads BPO is relentless and highly efficient. Our conversion rates are up
                         by 40%."</p>
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full overflow-hidden">
-                            <img class="w-full h-full object-cover"
-                                alt="Rizwan Ayoub, American Life Solutions"
-                                src="taha_zahoor.png">
+                            <img class="w-full h-full object-cover" alt="Rizwan Ayoub, American Life Solutions"
+                                src="rizwan ayoub.png">
                         </div>
                         <div>
                             <p class="font-headline-sm text-[16px] text-white">Rizwan Ayoub</p>
@@ -706,23 +769,27 @@
                 <div class="p-8 border border-border-subtle rounded-2xl flex flex-col hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#915EFF]/20 transition-all duration-300 cursor-pointer"
                     data-aos="fade-up" data-aos-delay="200">
                     <div class="flex text-yellow-500 mb-6" aria-label="5 stars">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;"
+                            aria-hidden="true">star</span>
                     </div>
                     <p class="text-gray-400 mb-8 flex-grow">"24/7 coverage was a nightmare to manage internally.
                         Partnering with Leads BPO allowed us to provide global support while actually reducing our
                         operational spend."</p>
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full overflow-hidden">
-                            <img class="w-full h-full object-cover"
-                                alt="Tuasin Hassan, CEO of Unified Risk Solution."
-                                src="taha_zahoor.jpg">
+                            <img class="w-full h-full object-cover" alt="Waqar, CEO of Unified Risk Solution"
+                                src="waqar.png">
                         </div>
                         <div>
-                            <p class="font-headline-sm text-[16px] text-white">Tuasin Hassan</p>
+                            <p class="font-headline-sm text-[16px] text-white">Waqar</p>
                             <p class="text-[12px] text-gray-400 uppercase tracking-wider">CEO,Unified Risk Solution</p>
                         </div>
                     </div>
@@ -740,51 +807,51 @@
                 Asked Questions</h2>
             <div class="space-y-4">
                 <details class="group p-6 bg-[#0b080c] border border-border-subtle rounded-xl cursor-pointer">
-                    <summary
-                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
+                    <summary class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
                         aria-expanded="false">
                         How quickly can we start a new campaign?
-                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform" aria-hidden="true">expand_more</span>
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform"
+                            aria-hidden="true">expand_more</span>
                     </summary>
                     <p class="mt-4 text-gray-400">We can typically launch a standard customer support or lead generation
                         campaign within 7 to 10 business days, which includes training and system integration.</p>
                 </details>
                 <details class="group p-6 bg-[#0b080c] border border-border-subtle rounded-xl cursor-pointer">
-                    <summary
-                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
+                    <summary class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
                         aria-expanded="false">
                         What is your pricing structure?
-                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform" aria-hidden="true">expand_more</span>
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform"
+                            aria-hidden="true">expand_more</span>
                     </summary>
                     <p class="mt-4 text-gray-400">We offer flexible pricing models including per-hour, per-agent, or
                         performance-based models depending on the service type and volume requirements.</p>
                 </details>
                 <details class="group p-6 bg-[#0b080c] border border-border-subtle rounded-xl cursor-pointer">
-                    <summary
-                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
+                    <summary class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
                         aria-expanded="false">
                         How do you ensure the quality of calls?
-                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform" aria-hidden="true">expand_more</span>
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform"
+                            aria-hidden="true">expand_more</span>
                     </summary>
                     <p class="mt-4 text-gray-400">Every call is recorded and a percentage is audited daily by our
                         dedicated QA team using a comprehensive scorecard aligned with your brand standards.</p>
                 </details>
                 <details class="group p-6 bg-[#0b080c] border border-border-subtle rounded-xl cursor-pointer">
-                    <summary
-                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
+                    <summary class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
                         aria-expanded="false">
                         Can you work with our existing CRM?
-                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform" aria-hidden="true">expand_more</span>
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform"
+                            aria-hidden="true">expand_more</span>
                     </summary>
                     <p class="mt-4 text-gray-400">Yes, we are proficient in major CRMs like Salesforce, HubSpot, and
                         Zendesk, and our tech team can handle most custom integrations.</p>
                 </details>
                 <details class="group p-6 bg-[#0b080c] border border-border-subtle rounded-xl cursor-pointer">
-                    <summary
-                        class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
+                    <summary class="flex justify-between items-center font-headline-sm text-[18px] text-white list-none"
                         aria-expanded="false">
                         Is there a minimum contract length?
-                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform" aria-hidden="true">expand_more</span>
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform"
+                            aria-hidden="true">expand_more</span>
                     </summary>
                     <p class="mt-4 text-gray-400">While we prefer long-term partnerships for maximum impact, we offer
                         trial periods and short-term contracts for specific seasonal projects.</p>
@@ -842,8 +909,7 @@
                         <div>
                             <p class="text-[12px] text-gray-400 uppercase font-bold tracking-wider">Visit Us</p>
                             <a href="https://www.google.com/maps/search/58+Baig+Plaza+Canning+Road+Saddar+Rawalpindi+Pakistan"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                target="_blank" rel="noopener noreferrer"
                                 class="text-white font-semibold hover:text-[#915EFF] transition-colors"
                                 data-contact="address">58/62, Baig Plaza, Canning Road, Saddar, Rawalpindi,
                                 46000</a>
@@ -857,19 +923,21 @@
                     <!-- Honeypot — hidden from real users, bots will fill it -->
                     <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
                         <label for="contact_hp">Leave this field empty</label>
-                        <input type="text" id="contact_hp" name="contact_hp" tabindex="-1" autocomplete="off" data-honeypot>
+                        <input type="text" id="contact_hp" name="contact_hp" tabindex="-1" autocomplete="off"
+                            data-honeypot>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2" data-aos="fade-right">
-                            <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactFullName">Full Name</label>
+                            <label class="font-label-caps text-label-caps text-gray-400 uppercase"
+                                for="contactFullName">Full Name</label>
                             <input id="contactFullName"
                                 class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white"
-                                placeholder="John Doe" type="text" required autocomplete="name"
-                                maxlength="100">
+                                placeholder="John Doe" type="text" required autocomplete="name" maxlength="100">
                         </div>
                         <div class="space-y-2" data-aos="fade-left">
-                            <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactEmail">Email Address</label>
+                            <label class="font-label-caps text-label-caps text-gray-400 uppercase"
+                                for="contactEmail">Email Address</label>
                             <input id="contactEmail"
                                 class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white"
                                 placeholder="john@company.com" type="email" required autocomplete="email"
@@ -878,22 +946,23 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2" data-aos="fade-right">
-                            <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactPhone">Phone Number</label>
+                            <label class="font-label-caps text-label-caps text-gray-400 uppercase"
+                                for="contactPhone">Phone Number</label>
                             <input id="contactPhone"
                                 class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white"
-                                placeholder="+1 (555) 000-0000" type="tel" required autocomplete="tel"
-                                maxlength="20">
+                                placeholder="+1 (555) 000-0000" type="tel" required autocomplete="tel" maxlength="20">
                         </div>
                         <div class="space-y-2" data-aos="fade-left">
-                            <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactCompany">Company Name</label>
+                            <label class="font-label-caps text-label-caps text-gray-400 uppercase"
+                                for="contactCompany">Company Name</label>
                             <input id="contactCompany"
                                 class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white"
-                                placeholder="Acme Inc." type="text" autocomplete="organization"
-                                maxlength="150">
+                                placeholder="Acme Inc." type="text" autocomplete="organization" maxlength="150">
                         </div>
                     </div>
                     <div class="space-y-2">
-                        <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactService">Interested
+                        <label class="font-label-caps text-label-caps text-gray-400 uppercase"
+                            for="contactService">Interested
                             Service</label>
                         <select id="contactService"
                             class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white">
@@ -908,13 +977,15 @@
                         </select>
                     </div>
                     <div class="space-y-2">
-                        <label class="font-label-caps text-label-caps text-gray-400 uppercase" for="contactMessage">Message</label>
+                        <label class="font-label-caps text-label-caps text-gray-400 uppercase"
+                            for="contactMessage">Message</label>
                         <textarea id="contactMessage"
                             class="w-full bg-[#0b080c] border border-border-subtle rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-royal/20 focus:border-[#915EFF] outline-none transition-all text-white"
                             placeholder="Tell us about your requirements..." rows="4" maxlength="2000"></textarea>
                     </div>
                     <!-- Feedback region — accessible live region -->
-                    <div id="contactFeedback" class="hidden rounded p-4 text-sm font-semibold" aria-live="polite" role="alert"></div>
+                    <div id="contactFeedback" class="hidden rounded p-4 text-sm font-semibold" aria-live="polite"
+                        role="alert"></div>
                     <button id="contactSubmitBtn"
                         class="w-full bg-[#915EFF] text-white py-4 rounded-lg font-button text-button uppercase tracking-wider hover:bg-[#151030] transition-all shadow-lg shadow-[#915EFF]/10 hover:scale-105 transition-transform duration-300"
                         type="submit">Send Request</button>
@@ -936,18 +1007,15 @@
                 <div class="flex gap-4">
                     <!-- Social icons — URLs managed in COMPANY.social in app.js -->
                     <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#915EFF] hover:border-[#915EFF] transition-all text-white"
-                        data-social="share"
-                        aria-label="Leads BPO on LinkedIn">
+                        data-social="share" aria-label="Leads BPO on LinkedIn">
                         <span class="material-symbols-outlined text-[18px]" aria-hidden="true">share</span>
                     </a>
                     <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#915EFF] hover:border-[#915EFF] transition-all text-white"
-                        data-social="web"
-                        aria-label="Leads BPO website">
+                        data-social="web" aria-label="Leads BPO website">
                         <span class="material-symbols-outlined text-[18px]" aria-hidden="true">public</span>
                     </a>
                     <a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#915EFF] hover:border-[#915EFF] transition-all text-white"
-                        data-social="campaign"
-                        aria-label="Leads BPO on Facebook">
+                        data-social="campaign" aria-label="Leads BPO on Facebook">
                         <span class="material-symbols-outlined text-[18px]" aria-hidden="true">campaign</span>
                     </a>
                 </div>
@@ -965,26 +1033,36 @@
             <div class="space-y-6">
                 <h4 class="font-headline-sm text-[18px] font-bold text-white">Services</h4>
                 <ul class="space-y-3">
-                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services" data-scroll="services">Call Center</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services" data-scroll="services">Lead Gen</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services" data-scroll="services">Customer Support</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services" data-scroll="services">Telesales</a></li>
-                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services" data-scroll="services">Back Office</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services"
+                            data-scroll="services">Call Center</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services"
+                            data-scroll="services">Lead Gen</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services"
+                            data-scroll="services">Customer Support</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services"
+                            data-scroll="services">Telesales</a></li>
+                    <li><a class="text-gray-400 hover:text-white transition-colors" href="#services"
+                            data-scroll="services">Back Office</a></li>
                 </ul>
             </div>
             <div class="space-y-6">
                 <h4 class="font-headline-sm text-[18px] font-bold text-white">Contact</h4>
                 <ul class="space-y-4">
                     <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]" aria-hidden="true">call</span>
-                        <a href="tel:+923108069046" class="text-gray-400 hover:text-white transition-colors">03108069046</a>
+                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]"
+                            aria-hidden="true">call</span>
+                        <a href="tel:+923108069046"
+                            class="text-gray-400 hover:text-white transition-colors">03108069046</a>
                     </li>
                     <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]" aria-hidden="true">mail</span>
-                        <a href="mailto:leadsbpo65@gmail.com" class="text-gray-400 hover:text-white transition-colors">leadsbpo65@gmail.com</a>
+                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]"
+                            aria-hidden="true">mail</span>
+                        <a href="mailto:leadsbpo65@gmail.com"
+                            class="text-gray-400 hover:text-white transition-colors">leadsbpo65@gmail.com</a>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]" aria-hidden="true">location_on</span>
+                        <span class="material-symbols-outlined text-[#915EFF] text-[20px]"
+                            aria-hidden="true">location_on</span>
                         <a href="https://www.google.com/maps/search/58+Baig+Plaza+Canning+Road+Saddar+Rawalpindi+Pakistan"
                             target="_blank" rel="noopener noreferrer"
                             class="text-gray-400 hover:text-white transition-colors">
@@ -1029,26 +1107,33 @@
                                     <!-- Honeypot -->
                                     <div style="position:absolute;left:-9999px;" aria-hidden="true">
                                         <label for="career_hp">Leave this field empty</label>
-                                        <input type="text" id="career_hp" name="career_hp" tabindex="-1" autocomplete="off" data-honeypot>
+                                        <input type="text" id="career_hp" name="career_hp" tabindex="-1"
+                                            autocomplete="off" data-honeypot>
                                     </div>
 
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300" for="careerFullName">Full Name</label>
-                                        <input type="text" id="careerFullName" required autocomplete="name" maxlength="100"
+                                        <label class="block text-sm font-medium text-gray-300" for="careerFullName">Full
+                                            Name</label>
+                                        <input type="text" id="careerFullName" required autocomplete="name"
+                                            maxlength="100"
                                             class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300" for="careerEmail">Email Address</label>
-                                        <input type="email" id="careerEmail" required autocomplete="email" maxlength="150"
+                                        <label class="block text-sm font-medium text-gray-300" for="careerEmail">Email
+                                            Address</label>
+                                        <input type="email" id="careerEmail" required autocomplete="email"
+                                            maxlength="150"
                                             class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300" for="careerPhone">Phone Number</label>
+                                        <label class="block text-sm font-medium text-gray-300" for="careerPhone">Phone
+                                            Number</label>
                                         <input type="tel" id="careerPhone" required autocomplete="tel" maxlength="20"
                                             class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300" for="careerPosition">Position Applied
+                                        <label class="block text-sm font-medium text-gray-300"
+                                            for="careerPosition">Position Applied
                                             For</label>
                                         <select id="careerPosition" required
                                             class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm bg-[#151030] text-white">
@@ -1059,23 +1144,26 @@
                                         </select>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300" for="careerExperience">Experience</label>
+                                        <label class="block text-sm font-medium text-gray-300"
+                                            for="careerExperience">Experience</label>
                                         <textarea id="careerExperience" rows="2" maxlength="500"
                                             class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]"></textarea>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300" for="careerMessage">Message</label>
+                                        <label class="block text-sm font-medium text-gray-300"
+                                            for="careerMessage">Message</label>
                                         <textarea id="careerMessage" rows="2" maxlength="2000"
                                             class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]"></textarea>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium text-gray-300" for="careerResume">Resume URL
+                                        <label class="block text-sm font-medium text-gray-300" for="careerResume">Resume
+                                            URL
                                             (Optional)</label>
-                                        <input type="url" id="careerResume"
-                                            placeholder="https://drive.google.com/..."
+                                        <input type="url" id="careerResume" placeholder="https://drive.google.com/..."
                                             class="mt-1 block w-full border border-[#2d2560] rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-royal focus:border-[#915EFF] sm:text-sm text-white bg-[#0b080c]">
                                     </div>
-                                    <div id="careersFeedback" class="hidden rounded p-3 text-sm font-semibold" aria-live="polite" role="alert"></div>
+                                    <div id="careersFeedback" class="hidden rounded p-3 text-sm font-semibold"
+                                        aria-live="polite" role="alert"></div>
                                     <div
                                         class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse border-t border-gray-200 -mx-4 -mb-4 mt-4 bg-[#151030]">
                                         <button type="submit" id="careersSubmitBtn"
@@ -1138,89 +1226,89 @@
 
     <!-- Mobile menu close button wired inline (needs no module) -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var closeBtn = document.getElementById('mobileMenuCloseBtn');
-        var menuBtn  = document.getElementById('mobileMenuBtn');
-        if (closeBtn && menuBtn) {
-          closeBtn.addEventListener('click', function() { menuBtn.click(); });
-        }
-      });
+        document.addEventListener('DOMContentLoaded', function () {
+            var closeBtn = document.getElementById('mobileMenuCloseBtn');
+            var menuBtn = document.getElementById('mobileMenuBtn');
+            if (closeBtn && menuBtn) {
+                closeBtn.addEventListener('click', function () { menuBtn.click(); });
+            }
+        });
     </script>
 
     <!-- Hero Intro Animation Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-          const hasPlayed = sessionStorage.getItem("heroIntroPlayed");
-          const overlay = document.getElementById("heroIntroOverlay");
-          const introHeading = document.getElementById("introHeading");
-          const introParagraph = document.getElementById("introParagraph");
-          const mainContent = document.getElementById("mainHeroContent");
-          const scrollIndicator = document.getElementById("scrollIndicator");
-          const navLogoWrapper = document.getElementById("navLogoWrapper");
+        document.addEventListener("DOMContentLoaded", () => {
+            const hasPlayed = sessionStorage.getItem("heroIntroPlayed");
+            const overlay = document.getElementById("heroIntroOverlay");
+            const introHeading = document.getElementById("introHeading");
+            const introParagraph = document.getElementById("introParagraph");
+            const mainContent = document.getElementById("mainHeroContent");
+            const scrollIndicator = document.getElementById("scrollIndicator");
+            const navLogoWrapper = document.getElementById("navLogoWrapper");
 
-          // Logo fade-in on load
-          if (navLogoWrapper) {
-              gsap.to(navLogoWrapper, { opacity: 1, duration: 1.5, ease: "power2.out" });
-          }
+            // Logo fade-in on load
+            if (navLogoWrapper) {
+                gsap.to(navLogoWrapper, { opacity: 1, duration: 1.5, ease: "power2.out" });
+            }
 
-          if (hasPlayed || !overlay) {
-              if (overlay) overlay.remove();
-              if (mainContent) mainContent.classList.remove("hero-hidden");
-              if (scrollIndicator) scrollIndicator.classList.remove("hero-hidden");
-          } else {
-              sessionStorage.setItem("heroIntroPlayed", "true");
-              
-              const tl = gsap.timeline({
-                  onComplete: () => {
-                      overlay.remove();
-                      gsap.to([mainContent, scrollIndicator], {
-                          opacity: 1,
-                          duration: 0.7,
-                          ease: "power2.out",
-                          onStart: () => {
-                              mainContent.classList.remove("hero-hidden");
-                              scrollIndicator.classList.remove("hero-hidden");
-                          }
-                      });
-                  }
-              });
+            if (hasPlayed || !overlay) {
+                if (overlay) overlay.remove();
+                if (mainContent) mainContent.classList.remove("hero-hidden");
+                if (scrollIndicator) scrollIndicator.classList.remove("hero-hidden");
+            } else {
+                sessionStorage.setItem("heroIntroPlayed", "true");
 
-              // 1 & 2. Show heading
-              tl.to(introHeading, {
-                  opacity: 1,
-                  scale: 1,
-                  filter: "blur(0px)",
-                  y: 0,
-                  duration: 0.8,
-                  ease: "power3.out"
-              })
-              // 3 & 4. Keep title visible for 2 seconds, then animate out
-              .to(introHeading, {
-                  opacity: 0,
-                  scale: 0.95,
-                  filter: "blur(12px)",
-                  y: -30,
-                  duration: 0.7,
-                  ease: "power2.inOut"
-              }, "+=2")
-              // 5. Reveal supporting paragraph
-              .to(introParagraph, {
-                  opacity: 1,
-                  y: 0,
-                  filter: "blur(0px)",
-                  duration: 0.8,
-                  ease: "power3.out"
-              })
-              // 6. Keep paragraph visible for 5 seconds, then animate out
-              .to(introParagraph, {
-                  opacity: 0,
-                  y: -20,
-                  filter: "blur(12px)",
-                  duration: 0.7,
-                  ease: "power2.inOut"
-              }, "+=5");
-          }
-      });
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        overlay.remove();
+                        gsap.to([mainContent, scrollIndicator], {
+                            opacity: 1,
+                            duration: 0.7,
+                            ease: "power2.out",
+                            onStart: () => {
+                                mainContent.classList.remove("hero-hidden");
+                                scrollIndicator.classList.remove("hero-hidden");
+                            }
+                        });
+                    }
+                });
+
+                // 1 & 2. Show heading
+                tl.to(introHeading, {
+                    opacity: 1,
+                    scale: 1,
+                    filter: "blur(0px)",
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power3.out"
+                })
+                    // 3 & 4. Keep title visible for 2 seconds, then animate out
+                    .to(introHeading, {
+                        opacity: 0,
+                        scale: 0.95,
+                        filter: "blur(12px)",
+                        y: -30,
+                        duration: 0.7,
+                        ease: "power2.inOut"
+                    }, "+=2")
+                    // 5. Reveal supporting paragraph
+                    .to(introParagraph, {
+                        opacity: 1,
+                        y: 0,
+                        filter: "blur(0px)",
+                        duration: 0.8,
+                        ease: "power3.out"
+                    })
+                    // 6. Keep paragraph visible for 5 seconds, then animate out
+                    .to(introParagraph, {
+                        opacity: 0,
+                        y: -20,
+                        filter: "blur(12px)",
+                        duration: 0.7,
+                        ease: "power2.inOut"
+                    }, "+=5");
+            }
+        });
     </script>
 </body>
 
